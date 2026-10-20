@@ -1,0 +1,138 @@
+/* Marry Mae — brand tokens and base styles
+   Source of truth: the Marry Mae brand reference (Design System) and brand/BRAND.md.
+   Change values here only when the brand reference changes. */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Colour */
+  --blood: #DB2A14;        /* brand red: big blocks; small text on it is white */
+  --blood-bright: #F0442A; /* red accents on black only */
+  --blood-text: #DB2A14;   /* red text on white; on flesh only 24px+ */
+  --ink: #000000;
+  --paper: #FFFFFF;
+  --flesh: #FFD3DA;
+  --mist: #EDEDED;
+  --ink-soft: #333333;
+  --paper-soft: #D9D9D9;
+
+  /* Type families */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Type sizes (desktop; phone sizes in the media query below) */
+  --size-display-xl: 6rem;     /* 96px hero */
+  --size-display-l: 4rem;      /* 64px page headline */
+  --size-display-m: 2.75rem;   /* 44px section headline */
+  --size-display-s: 2rem;      /* 32px card title */
+  --size-price: 3.25rem;       /* 52px */
+  --size-body-l: 1.25rem;      /* 20px */
+  --size-body: 1.0625rem;      /* 17px */
+  --size-body-s: 0.9375rem;    /* 15px */
+  --size-label: 0.875rem;      /* 14px */
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 96px;
+
+  /* Shape and layout */
+  --radius: 0;
+  --border-strong: 2px;
+  --border-hairline: 1px;
+  --max-width: 1280px;
+  --text-width: 560px;
+  --touch-target: 44px;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --size-display-xl: 3.5rem;  /* 56px */
+    --size-display-l: 2.75rem;  /* 44px */
+    --size-display-m: 2.125rem; /* 34px */
+    --size-display-s: 1.75rem;  /* 28px */
+    --size-price: 2.75rem;      /* 44px */
+    --size-body-l: 1.125rem;    /* 18px */
+    --size-label: 0.8125rem;    /* 13px */
+    --space-8: 48px;
+    --space-9: 64px;
+  }
+}
+
+/* Base */
+*, *::before, *::after { box-sizing: border-box; border-radius: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:hover { opacity: 0.75; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.on-blood :focus-visible, .on-ink :focus-visible { outline-color: var(--paper); }
+
+/* Layout */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-5); }
+.section { padding: var(--space-8) 0; }
+.section--quiet { padding: var(--space-9) 0; }
+.on-blood { background: var(--blood); color: var(--paper); }
+.on-ink { background: var(--ink); color: var(--paper); }
+.on-flesh { background: var(--flesh); color: var(--ink); }
+.on-paper { background: var(--paper); color: var(--ink); }
+
+/* Type */
+.display-xl, .display-l, .display-m, .display-s, .price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin: 0;
+}
+.display-xl { font-size: var(--size-display-xl); line-height: 0.95; }
+.display-l  { font-size: var(--size-display-l);  line-height: 1; }
+.display-m  { font-size: var(--size-display-m);  line-height: 1.05; }
+.display-s  { font-size: var(--size-display-s);  line-height: 1.1; }
+.price      { font-size: var(--size-price);      line-height: 1; }
+.body-l { font-size: var(--size-body-l); line-height: 1.55; font-weight: 500; max-width: var(--text-width); }
+.body-s { font-size: var(--size-body-s); line-height: 1.5; }
+.label  { font-family: var(--font-mono); font-size: var(--size-label); line-height: 1.4; text-transform: lowercase; }
+
+/* The italic heat: one <em> per headline, coloured by its ground */
+.on-paper em, .on-flesh em { font-style: italic; color: var(--blood-text); }
+.on-blood em { font-style: italic; color: var(--paper); }
+.on-ink em   { font-style: italic; color: var(--blood-bright); }
+.on-blood .display-xl, .on-blood .display-l, .on-blood .display-m { color: var(--ink); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--touch-target);
+  padding: 0 26px;
+  font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 700;
+  text-decoration: none; border: var(--border-strong) solid transparent;
+}
+.btn--solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn--outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.on-blood .btn--outline { color: var(--paper); border-color: var(--ink); }
+.on-ink .btn--solid { background: var(--blood); border-color: var(--blood); color: var(--paper); }
+.on-ink .btn--outline { color: var(--paper); border-color: var(--paper); }
+.btn-pair { display: flex; flex-wrap: wrap; }
+.link-arrow { font-weight: 700; text-decoration: none; }
+.link-arrow::after { content: " →"; }
+
+/* Lines and cards */
+.rule { border: 0; border-top: var(--border-strong) solid currentColor; margin: 0; }
+.card { border: var(--border-strong) solid var(--ink); display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--paper); }
+.card__media { aspect-ratio: 3 / 2; display: flex; align-items: flex-end; padding: var(--space-4); font-family: var(--font-mono); font-size: 0.75rem; }
+.card__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }

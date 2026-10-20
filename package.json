@@ -1,0 +1,19 @@
+{
+  "name": "marrymae",
+  "version": "1.0.0",
+  "description": "Marry Mae website",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.4.1",
+    "gsap": "^3.15.0"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  }
+}

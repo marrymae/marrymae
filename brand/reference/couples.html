@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marry Mae — reference couples page</title>
+<!-- REFERENCE ONLY: shows the approved look of an offer page. Copy is sample copy; final copy comes from the Marry Mae Project. LEGAL REVIEW before launch. -->
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  .nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-5) 0; border-bottom: var(--border-hairline) solid var(--ink-soft); }
+  .wordmark { font-family: var(--font-display); font-size: 1.75rem; line-height: 1; text-decoration: none; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; font-weight: 700; }
+  .nav ul a { text-decoration: none; }
+  .nav [aria-current="page"] { border-bottom: var(--border-strong) solid var(--blood-bright); }
+  .hero { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); align-items: center; padding: var(--space-8) 0; }
+  .hero__text { display: flex; flex-direction: column; gap: var(--space-5); }
+  .hero .label { color: var(--blood-bright); }
+  .hero p { color: var(--paper-soft); margin: 0; }
+  .photo { background: var(--blood); color: var(--paper); min-height: 380px; display: flex; align-items: flex-end; justify-content: center; padding: var(--space-5); font-family: var(--font-mono); font-size: 0.8125rem; }
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-4); margin-bottom: var(--space-6); }
+  .prices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: var(--border-strong) solid var(--ink); }
+  .pkg { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); border-right: var(--border-strong) solid var(--ink); }
+  .pkg:last-child { border-right: 0; }
+  .pkg--rec { background: var(--blood); color: var(--paper); }
+  .journey { list-style: none; margin: var(--space-6) 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+  .journey li { border-top: var(--border-strong) solid var(--ink); padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+  .journey strong { font-size: 1.375rem; }
+  @media (max-width: 700px) {
+    .hero, .journey { grid-template-columns: 1fr; }
+    .prices { grid-template-columns: 1fr; }
+    .pkg { border-right: 0; border-bottom: var(--border-strong) solid var(--ink); }
+    .pkg--rec { order: -1; }
+    .nav ul li:not(:last-child) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="on-ink">
+  <div class="container">
+    <nav class="nav" aria-label="Main">
+      <a class="wordmark" href="/">Marry <em>Mae</em></a>
+      <ul>
+        <li><a href="/method">The method</a></li>
+        <li><a href="/1-1">1:1</a></li>
+        <li><a href="/couples" aria-current="page">Couples</a></li>
+        <li><a href="/ritual-theatre">Ritual Theatre</a></li>
+        <li><a href="/library">Library</a></li>
+        <li><a class="btn btn--solid" href="/start">Start here</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="hero__text">
+        <span class="label">couples · in person · lisbon or at your place</span>
+        <h1 class="display-l">Reach each other <em>again.</em></h1>
+        <p class="body-l">Slow down together, say what is true and let an erotic current move between you. I teach, guide and demonstrate; you practise on each other.</p>
+      </div>
+      <div class="photo" role="img" aria-label="Photo to come: a couple, foreheads touching">photo: a couple, foreheads touching</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="on-paper section">
+    <div class="container">
+      <div class="head">
+        <h2 class="display-m">You choose <em>the depth.</em></h2>
+        <span class="label">sessions of 4 to 8 hours each · payment plans with no surcharge</span>
+      </div>
+      <div class="prices">
+        <div class="pkg"><span class="label">first session</span><span class="display-s">4 hours</span><span class="price">€590</span><span class="body-s">Credited in full if you continue within 14 days.</span></div>
+        <div class="pkg"><span class="label">package</span><span class="display-s">8 hours</span><span class="price">€990</span><span class="body-s">Two instalments available.</span></div>
+        <div class="pkg pkg--rec"><span class="label">recommended</span><span class="display-s">12 hours</span><span class="price">€1,350</span><span class="body-s">Room to go deep and take it home. Three instalments available.</span></div>
+        <div class="pkg"><span class="label">package</span><span class="display-s">16 hours</span><span class="price">€1,590</span><span class="body-s">The full arc, spread over weeks. Three instalments available.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-blood section">
+    <div class="container">
+      <h2 class="display-m">How we <em>begin</em></h2>
+      <ol class="journey">
+        <li><span class="label">01</span><strong>Intake form</strong><span>A few questions about you, what you want and your boundaries.</span></li>
+        <li><span class="label">02</span><strong>Discovery call</strong><span>45 minutes, €50, credited in full if you book.</span></li>
+        <li><span class="label">03</span><strong>Agreement</strong><span>Conditions and boundaries in writing, plus three short questionnaires.</span></li>
+        <li><span class="label">04</span><strong>Sessions</strong><span>In Lisbon, or I come to you at the same price.</span></li>
+      </ol>
+      <a class="btn btn--solid" href="/start">Start with the intake form</a>
+    </div>
+  </section>
+</main>
+
+<footer class="on-ink" style="padding: var(--space-6) 0">
+  <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--space-4)">
+    <a class="wordmark" href="/">Marry <em>Mae</em></a>
+    <span class="label">hi@marrymae.com · @marrymae · lisbon</span>
+  </div>
+</footer>
+
+</body>
+</html>

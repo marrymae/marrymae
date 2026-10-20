@@ -1,0 +1,12 @@
+---
+import { url } from '../lib/url';
+
+interface Props {
+  size?: 'nav' | 'footer';
+}
+const { size = 'nav' } = Astro.props;
+---
+
+<a class={`wordmark wordmark--${size}`} href={url('/')} aria-label="Marry Mae, home">
+  <span class="wordmark__marry" aria-hidden="true">Marry</span> <em class="wordmark__mae" aria-hidden="true">Mae</em>
+</a>

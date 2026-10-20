@@ -1,0 +1,49 @@
+---
+import { url, nav } from '../lib/url';
+import Wordmark from './Wordmark.astro';
+
+interface Props {
+  current?: string;
+}
+const { current } = Astro.props;
+---
+
+<nav class="nav" aria-label="Main">
+  <Wordmark />
+  <ul class="nav__links">
+    {nav.map((item) => (
+      <li>
+        <a class="nav__link" href={url(item.href)} aria-current={current === item.href ? 'page' : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <a class="btn btn--solid" href={url('start')} aria-current={current === 'start' ? 'page' : undefined}>Start here</a>
+    </li>
+  </ul>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu</button>
+</nav>
+
+<div class="menu on-ink" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="container menu__inner">
+    <div class="menu__top">
+      <Wordmark />
+      <button class="menu-toggle menu-toggle--close" type="button" data-menu-close>Close</button>
+    </div>
+    <ul class="menu__links">
+      {nav.map((item, i) => (
+        <li>
+          <a class="menu__link" href={url(item.href)} aria-current={current === item.href ? 'page' : undefined}>
+            <span class="label">{String(i + 1).padStart(2, '0')}</span>
+            <span class="menu__name">{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="menu__bottom">
+      <a class="btn btn--solid" href={url('start')}>Start here</a>
+      <span class="label">hi@marrymae.com · @marrymae · lisbon</span>
+    </div>
+  </div>
+</div>

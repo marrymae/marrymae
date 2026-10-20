@@ -1,0 +1,22 @@
+---
+const steps = [
+  { name: 'Slow', line: 'Make space for the body to arrive.' },
+  { name: 'Feel', line: 'Notice what is really there.' },
+  { name: 'Speak', line: 'Say what is on your heart.' },
+  { name: 'Meet', line: 'Be seen while being real.' },
+  { name: 'Flow', line: 'Let the erotic current move.' },
+];
+---
+
+<div class="steps-wrap">
+<span class="steps__line" aria-hidden="true" data-draw></span>
+<ol class="steps" data-steps>
+  {steps.map((step, i) => (
+    <li class="step">
+      <span class="label step__num">{String(i + 1).padStart(2, '0')}</span>
+      <span class="display-s step__name">{step.name}</span>
+      <span class="step__line">{step.line}</span>
+    </li>
+  ))}
+</ol>
+</div>

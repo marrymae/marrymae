@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import MethodSteps from '../components/MethodSteps.astro';
+import CopyToCome from '../components/CopyToCome.astro';
+---
+
+<Layout title="The method" ground="ink" current="method">
+  <PageHero slot="hero" label="slow · feel · speak · meet · flow" headline="Connecting <em>heart and sex</em>" />
+  <section class="on-ink section method-page" aria-label="The five steps">
+    <div class="container">
+      <MethodSteps />
+    </div>
+  </section>
+  <CopyToCome />
+</Layout>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marry Mae — reference homepage</title>
+<!-- REFERENCE ONLY: shows the approved look of each homepage section. Copy is sample copy from the brand positioning; final copy comes from the Marry Mae Project. -->
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  .nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-5) 0; border-bottom: var(--border-strong) solid var(--ink); }
+  .wordmark { font-family: var(--font-display); font-size: 1.75rem; line-height: 1; text-decoration: none; color: var(--ink); }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; font-weight: 700; font-size: 1rem; }
+  .nav ul a { text-decoration: none; }
+  .hero { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); align-items: end; padding: var(--space-8) 0; }
+  .hero__text { display: flex; flex-direction: column; gap: var(--space-5); }
+  .photo { background: var(--flesh); color: var(--ink); min-height: 520px; display: flex; align-items: flex-end; justify-content: center; padding: var(--space-5); font-family: var(--font-mono); font-size: 0.8125rem; text-align: center; }
+  .method-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-5); margin-bottom: var(--space-6); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: var(--border-strong) solid var(--blood-bright); }
+  .steps li { padding: var(--space-5) var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .steps .label { color: var(--blood-bright); }
+  .steps .line { color: var(--paper-soft); font-size: 1rem; line-height: 1.5; }
+  .split { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); }
+  .split p { margin: 0 0 var(--space-4); font-size: 1.125rem; font-weight: 500; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-5); }
+  .quote { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-7); align-items: center; }
+  .quote .photo { background: var(--ink); color: var(--flesh); min-height: 380px; }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-6); }
+  .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); border-top: var(--border-hairline) solid var(--ink-soft); margin-top: var(--space-7); padding-top: var(--space-5); font-size: var(--size-body-s); color: var(--paper-soft); }
+  .footer-bottom a { color: var(--paper-soft); margin-left: var(--space-5); }
+  @media (max-width: 700px) {
+    .hero, .split, .quote { grid-template-columns: 1fr; }
+    .photo { min-height: 300px; }
+    .steps { grid-template-columns: 1fr; }
+    .steps li { flex-direction: row; align-items: baseline; gap: var(--space-4); padding: var(--space-4) 0; border-bottom: var(--border-hairline) solid var(--ink-soft); }
+    .steps .line { display: none; }
+    .cards { grid-template-columns: 1fr; }
+    .nav ul li:not(:last-child) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="on-blood">
+  <div class="container">
+    <nav class="nav" aria-label="Main">
+      <a class="wordmark" href="/">Marry <em>Mae</em></a>
+      <ul>
+        <li><a href="/method">The method</a></li>
+        <li><a href="/1-1">1:1</a></li>
+        <li><a href="/couples">Couples</a></li>
+        <li><a href="/ritual-theatre">Ritual Theatre</a></li>
+        <li><a href="/library">Library</a></li>
+        <li><a class="btn btn--solid" href="/start">Start here</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="hero__text">
+        <span class="label">singles · couples · lisbon</span>
+        <h1 class="display-xl">Eroticism that lasts, <em>because it's real.</em></h1>
+        <p class="body-l" style="margin:0">I guide singles and couples to connect heart and sex, in person and in the body, so your intimacy becomes real and your eroticism lasts.</p>
+        <div class="btn-pair">
+          <a class="btn btn--solid" href="/1-1">Work with me 1:1</a>
+          <a class="btn btn--outline" href="/couples">Come as a couple</a>
+        </div>
+      </div>
+      <div class="photo" role="img" aria-label="Photo to come: two bodies close, duotone">photo: duotone, black on flesh pink, two bodies close</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="on-ink section" aria-labelledby="method-title">
+    <div class="container">
+      <div class="method-head">
+        <h2 id="method-title" class="display-m">Connecting <em>heart and sex</em></h2>
+        <a class="link-arrow" href="/method">How the method works</a>
+      </div>
+      <ol class="steps">
+        <li><span class="label">01</span><span class="display-s">Slow</span><span class="line">Make space for the body to arrive.</span></li>
+        <li><span class="label">02</span><span class="display-s">Feel</span><span class="line">Notice what is really there.</span></li>
+        <li><span class="label">03</span><span class="display-s">Speak</span><span class="line">Say what is on your heart.</span></li>
+        <li><span class="label">04</span><span class="display-s">Meet</span><span class="line">Be seen while being real.</span></li>
+        <li><span class="label">05</span><span class="display-s">Flow</span><span class="line">Let the erotic current move.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="on-paper section--quiet">
+    <div class="container split">
+      <h2 class="display-m">Most of us keep heart and sex in <em>separate rooms.</em></h2>
+      <div>
+        <p>Sex gets rushed, routine or performed. Feelings stay on another track. Something in you knows there is more.</p>
+        <p>I teach you to slow down, say what is true and let a real erotic current move, then how to keep it alive for years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-paper" style="padding-bottom: var(--space-9)">
+    <div class="container">
+      <span class="label">ways to work with me</span>
+      <div class="cards">
+        <a class="card" href="/1-1"><div class="card__media" style="background:var(--blood);color:var(--paper)">photo: one body, slow light</div><div class="card__body"><span class="label">1:1 · from 8 hours · from €890</span><span class="display-s">1:1</span><span>Deep, in-person erotic education for you alone, in my space in Lisbon.</span><span class="link-arrow">Explore 1:1</span></div></a>
+        <a class="card" href="/couples"><div class="card__media" style="background:var(--flesh)">photo: two hands, close</div><div class="card__body"><span class="label">couples · first session €590</span><span class="display-s">Couples</span><span>Learn to reach each other again. In Lisbon, or I come to you.</span><span class="link-arrow">Explore couples work</span></div></a>
+        <a class="card" href="/ritual-theatre"><div class="card__media" style="background:var(--ink);color:var(--paper)">photo: performers in low light</div><div class="card__body"><span class="label">monthly · lisbon</span><span class="display-s">Ritual Theatre</span><span>Erotic ritual art without words. You write the prompts; we play them out.</span><span class="link-arrow">See the next show</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-flesh section--quiet">
+    <div class="container quote">
+      <div class="photo" role="img" aria-label="Photo to come: Marry laughing">photo: Marry, mid-laugh, unposed</div>
+      <div>
+        <p class="display-l">Nobody <em>performs</em> in my spaces.</p>
+        <p class="body-l">Permission to be soft. Permission to be wild. Bring all of you, the tender and the bold, and we start from what is real.</p>
+        <a class="link-arrow" href="/about">Meet Marry</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="on-ink section">
+  <div class="container">
+    <div class="footer-top">
+      <a class="wordmark" href="/" style="color:var(--paper);font-size:4.5rem">Marry <em>Mae</em></a>
+      <div class="label" style="display:flex;flex-direction:column;gap:var(--space-2)">
+        <a href="mailto:hi@marrymae.com">hi@marrymae.com</a>
+        <a href="https://instagram.com/marrymae">@marrymae</a>
+        <span>lisbon</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Eroticism that lasts, because it's real.</span>
+      <span><a href="/faq">FAQ</a><a href="/about">About</a><a href="/privacy">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

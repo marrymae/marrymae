@@ -1,0 +1,98 @@
+---
+// Copy on this page is the sample copy from brand/reference/homepage.html.
+// Swap in the approved homepage copy from the Marry Mae Project at Stage 3.
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import MethodSteps from '../components/MethodSteps.astro';
+import OfferCard from '../components/OfferCard.astro';
+import { url } from '../lib/url';
+---
+
+<Layout
+  title="Marry Mae"
+  description="I guide singles and couples to connect heart and sex, in person and in the body, so your intimacy becomes real and your eroticism lasts."
+  ground="blood"
+>
+  <div class="hero hero--home" slot="hero">
+    <div class="hero__text">
+      <span class="label hero__label" data-type>singles · couples · lisbon</span>
+      <h1 class="display-xl" data-split>Eroticism that lasts, <em>because it's real.</em></h1>
+      <p class="body-l hero__intro" data-reveal>
+        I guide singles and couples to connect heart and sex, in person and in the body, so your intimacy becomes real and your eroticism lasts.
+      </p>
+      <div class="btn-pair" data-reveal>
+        <a class="btn btn--solid" href={url('1-1')} data-magnetic>Work with me 1:1</a>
+        <a class="btn btn--outline" href={url('couples')} data-magnetic>Come as a couple</a>
+      </div>
+    </div>
+    <Photo caption="photo: duotone, black on flesh pink, two bodies close" alt="Photo to come: two bodies close, duotone" tone="flesh" class="photo--hero" />
+  </div>
+
+  <section class="on-ink section" aria-labelledby="method-title">
+    <div class="container">
+      <div class="method-head">
+        <h2 id="method-title" class="display-m" data-split>Connecting <em>heart and sex</em></h2>
+        <a class="link-arrow" href={url('method')} data-reveal>How the method works</a>
+      </div>
+      <MethodSteps />
+    </div>
+  </section>
+
+  <section class="on-paper section--quiet rooms" aria-labelledby="rooms-title">
+    <div class="container split">
+      <h2 id="rooms-title" class="display-m" data-split>Most of us keep heart and sex in <em>separate rooms.</em></h2>
+      <div class="split__text" data-stagger>
+        <p>Sex gets rushed, routine or performed. Feelings stay on another track. Something in you knows there is more.</p>
+        <p>I teach you to slow down, say what is true and let a real erotic current move, then how to keep it alive for years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-paper offers" aria-labelledby="offers-title">
+    <div class="container">
+      <h2 id="offers-title" class="label" data-type>ways to work with me</h2>
+      <div class="cards" data-stagger>
+        <OfferCard
+          href="1-1"
+          tone="blood"
+          caption="one body, slow light"
+          label="1:1 · from 8 hours · from €890"
+          title="1:1"
+          line="Deep, in-person erotic education for you alone, in my space in Lisbon."
+          cta="Explore 1:1"
+        />
+        <OfferCard
+          href="couples"
+          tone="flesh"
+          caption="two hands, close"
+          label="couples · first session €590"
+          title="Couples"
+          line="Learn to reach each other again. In Lisbon, or I come to you."
+          cta="Explore couples work"
+        />
+        <OfferCard
+          href="ritual-theatre"
+          tone="ink"
+          caption="performers in low light"
+          label="monthly · lisbon"
+          title="Ritual Theatre"
+          line="Erotic ritual art without words. You write the prompts; we play them out."
+          cta="See the next show"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="on-flesh section--quiet" aria-label="Meet Marry">
+    <div class="container quote">
+      <Photo caption="photo: Marry, mid-laugh, unposed" alt="Photo to come: Marry laughing" tone="ink" class="photo--quote" />
+      <div class="quote__text">
+        <p class="display-l" data-scrub-words>Nobody <em>performs</em> in my spaces.</p>
+        <p class="body-l" data-reveal>
+          Permission to be soft. Permission to be wild. Bring all of you, the tender and the bold, and we start from what is real.
+        </p>
+        <a class="link-arrow" href={url('about')} data-reveal>Meet Marry</a>
+      </div>
+    </div>
+  </section>
+</Layout>

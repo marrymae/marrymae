@@ -1,0 +1,19 @@
+---
+const steps = [
+  { name: 'Intake form', line: 'A few questions about you, what you want and your boundaries.' },
+  { name: 'Discovery call', line: '45 minutes, €50, credited in full if you book.' },
+  { name: 'Agreement', line: 'Conditions and boundaries in writing, plus three short questionnaires.' },
+  { name: 'Sessions', line: 'In Lisbon, or I come to you at the same price.' },
+];
+---
+
+<ol class="journey" data-stagger>
+  {steps.map((step, i) => (
+    <li>
+      <span class="journey__line" aria-hidden="true"></span>
+      <span class="label">{String(i + 1).padStart(2, '0')}</span>
+      <strong>{step.name}</strong>
+      <span>{step.line}</span>
+    </li>
+  ))}
+</ol>

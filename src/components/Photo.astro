@@ -1,0 +1,14 @@
+---
+// Placeholder until photography exists: a solid colour block with a small mono caption describing the intended photo.
+interface Props {
+  caption: string;
+  alt: string;
+  tone?: 'flesh' | 'blood' | 'ink';
+  class?: string;
+}
+const { caption, alt, tone = 'flesh', class: className = '' } = Astro.props;
+---
+
+<div class={`photo photo--${tone} ${className}`} role="img" aria-label={alt} data-wipe>
+  <span class="photo__caption" data-parallax aria-hidden="true">{caption}</span>
+</div>

@@ -1,0 +1,50 @@
+---
+// LEGAL REVIEW: hands-on offer page. Final wording is checked by a lawyer before launch.
+// Copy and prices on this page are the sample copy from brand/reference/couples.html.
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import PriceTable from '../components/PriceTable.astro';
+import BookingSteps from '../components/BookingSteps.astro';
+import { url } from '../lib/url';
+
+const packages = [
+  { label: 'first session', title: '4 hours', price: '€590', note: 'Credited in full if you continue within 14 days.' },
+  { label: 'package', title: '8 hours', price: '€990', note: 'Two instalments available.' },
+  { label: 'recommended', title: '12 hours', price: '€1,350', note: 'Room to go deep and take it home. Three instalments available.', recommended: true },
+  { label: 'package', title: '16 hours', price: '€1,590', note: 'The full arc, spread over weeks. Three instalments available.' },
+];
+---
+
+<Layout
+  title="Couples"
+  description="Slow down together, say what is true and let an erotic current move between you."
+  ground="ink"
+  current="couples"
+  legalReview
+>
+  <PageHero
+    slot="hero"
+    label="couples · in person · lisbon or at your place"
+    headline="Reach each other <em>again.</em>"
+    intro="Slow down together, say what is true and let an erotic current move between you. I teach, guide and demonstrate; you practise on each other."
+    photo={{ caption: 'photo: a couple, foreheads touching', alt: 'Photo to come: a couple, foreheads touching', tone: 'blood' }}
+  />
+
+  <section class="on-paper section" aria-labelledby="depth-title">
+    <div class="container">
+      <div class="head">
+        <h2 id="depth-title" class="display-m" data-split>You choose <em>the depth.</em></h2>
+        <span class="label" data-reveal>sessions of 4 to 8 hours each · payment plans with no surcharge</span>
+      </div>
+      <PriceTable packages={packages} />
+    </div>
+  </section>
+
+  <section class="on-blood section" aria-labelledby="begin-title">
+    <div class="container">
+      <h2 id="begin-title" class="display-m" data-split>How we <em>begin</em></h2>
+      <BookingSteps />
+      <a class="btn btn--solid" href={url('start')} data-reveal data-magnetic>Start with the intake form</a>
+    </div>
+  </section>
+</Layout>

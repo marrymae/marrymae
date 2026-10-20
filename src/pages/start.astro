@@ -1,0 +1,17 @@
+---
+// The intake form and the €50 discovery call booking arrive at Stage 5,
+// once the form, calendar and payment tools are chosen.
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import BookingSteps from '../components/BookingSteps.astro';
+import CopyToCome from '../components/CopyToCome.astro';
+---
+
+<Layout title="Start here" ground="blood" current="start">
+  <PageHero slot="hero" label="intake form · discovery call · €50" headline="Start <em>here</em>">
+    <BookingSteps />
+  </PageHero>
+  <CopyToCome>
+    <p class="label">intake form · coming at stage 5</p>
+  </CopyToCome>
+</Layout>

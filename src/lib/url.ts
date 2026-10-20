@@ -1,0 +1,16 @@
+// Every internal link goes through here, so the site works under /marrymae/ on GitHub Pages
+// and at the root once marrymae.com is connected.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+export const url = (path = '/') => {
+  const clean = path.replace(/^\/+/, '');
+  return clean ? `${base}/${clean}` : `${base}/`;
+};
+
+export const nav = [
+  { href: 'method', label: 'The method' },
+  { href: '1-1', label: '1:1' },
+  { href: 'couples', label: 'Couples' },
+  { href: 'ritual-theatre', label: 'Ritual Theatre' },
+  { href: 'library', label: 'Library' },
+];

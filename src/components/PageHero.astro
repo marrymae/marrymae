@@ -1,0 +1,22 @@
+---
+import Photo from './Photo.astro';
+
+interface Props {
+  label?: string;
+  /** Headline HTML with one <em> for the italic moment. */
+  headline: string;
+  intro?: string;
+  photo?: { caption: string; alt: string; tone?: 'flesh' | 'blood' | 'ink' };
+}
+const { label, headline, intro, photo } = Astro.props;
+---
+
+<div class:list={['hero', 'hero--page', { 'hero--solo': !photo }]}>
+  <div class="hero__text">
+    {label && <span class="label hero__label" data-type>{label}</span>}
+    <h1 class="display-l" data-split set:html={headline} />
+    {intro && <p class="body-l hero__intro" data-reveal>{intro}</p>}
+    <slot />
+  </div>
+  {photo && <Photo {...photo} />}
+</div>

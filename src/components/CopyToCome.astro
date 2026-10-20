@@ -1,0 +1,13 @@
+---
+interface Props {
+  ground?: 'paper' | 'flesh';
+}
+const { ground = 'paper' } = Astro.props;
+---
+
+<section class={`on-${ground} section--quiet`}>
+  <div class="container">
+    <p class="body-l copy-to-come" data-reveal>[COPY TO COME]</p>
+    <slot />
+  </div>
+</section>

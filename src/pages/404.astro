@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { url } from '../lib/url';
+---
+
+<Layout title="Page not found" ground="blood" noindex>
+  <PageHero slot="hero" label="404" headline="Page not <em>found</em>">
+    <div class="btn-pair" data-reveal>
+      <a class="btn btn--solid" href={url('/')}>Go to the homepage</a>
+    </div>
+  </PageHero>
+</Layout>

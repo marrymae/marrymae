@@ -1,0 +1,26 @@
+---
+import { url } from '../lib/url';
+
+interface Props {
+  href: string;
+  label: string;
+  title: string;
+  line: string;
+  cta: string;
+  caption: string;
+  tone: 'blood' | 'flesh' | 'ink';
+}
+const { href, label, title, line, cta, caption, tone } = Astro.props;
+---
+
+<a class="card offer" href={url(href)}>
+  <div class={`card__media offer__media photo--${tone}`}>
+    <span aria-hidden="true">photo: {caption}</span>
+  </div>
+  <div class="card__body">
+    <span class="label">{label}</span>
+    <span class="display-s offer__title">{title}</span>
+    <span>{line}</span>
+    <span class="link-arrow">{cta}</span>
+  </div>
+</a>

@@ -1,0 +1,25 @@
+---
+interface Pkg {
+  label: string;
+  title: string;
+  price: string;
+  note: string;
+  recommended?: boolean;
+}
+interface Props {
+  packages: Pkg[];
+}
+const { packages } = Astro.props;
+---
+
+<div class="prices" style={`--cols: ${packages.length}`} data-stagger>
+  {packages.map((p) => (
+    <div class:list={['pkg', { 'pkg--rec': p.recommended }]}>
+      {p.recommended && <span class="pkg__fill" aria-hidden="true" />}
+      <span class="label">{p.label}</span>
+      <span class="display-s">{p.title}</span>
+      <span class="price">{p.price}</span>
+      <span class="body-s">{p.note}</span>
+    </div>
+  ))}
+</div>
