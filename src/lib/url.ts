@@ -11,6 +11,6 @@ export const nav = [
   { href: 'method', label: 'The method' },
   { href: '1-1', label: '1:1' },
   { href: 'couples', label: 'Couples' },
-  { href: 'ritual-theatre', label: 'Ritual Theatre' },
+  { href: 'events', label: 'Events' },
   { href: 'library', label: 'Library' },
 ];

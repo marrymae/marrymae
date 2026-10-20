@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import EventList from '../../components/EventList.astro';
+import CopyToCome from '../../components/CopyToCome.astro';
+---
+
+<Layout title="Events" ground="ink" current="events">
+  <PageHero slot="hero" label="lisbon · in person" headline="Upcoming <em>events</em>" />
+  <section class="on-ink section events-page" aria-label="Upcoming events">
+    <div class="container">
+      <EventList />
+    </div>
+  </section>
+  <CopyToCome />
+</Layout>

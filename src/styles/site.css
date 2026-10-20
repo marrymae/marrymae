@@ -166,7 +166,7 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .split p { margin: 0 0 var(--space-4); font-size: 1.125rem; font-weight: 500; }
 
 /* ---------- Offer cards ---------- */
-.offers { padding-bottom: var(--space-9); }
+.offers { padding: var(--space-8) 0 var(--space-9); }
 .offers > .container > .label { display: block; margin: 0; font-weight: 400; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-5); }
 .offer { transition: transform 0.5s var(--ease-out); }
@@ -207,6 +207,42 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .journey__line { position: absolute; left: 0; right: 0; top: 0; height: var(--border-strong); background: var(--ink); transform-origin: left; }
 .journey strong { font-size: 1.375rem; }
 
+/* ---------- Upcoming events ---------- */
+.events { list-style: none; margin: 0; padding: 0; border-top: var(--border-strong) solid var(--blood-bright); }
+.events li { border-bottom: var(--border-hairline) solid var(--ink-soft); }
+.event {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr) minmax(0, 1fr) auto; gap: var(--space-5); align-items: baseline;
+  padding: var(--space-5) 0; text-decoration: none; transition: padding 0.5s var(--ease-out);
+}
+.event__date, .event__place { color: var(--paper-soft); }
+.event__title { transition: color 0.4s var(--ease-out); }
+.event:hover { padding-left: var(--space-4); }
+.event:hover .event__title { font-style: italic; color: var(--blood-bright); }
+.event:hover .link-arrow::after { transform: translateX(6px); }
+.events-page { padding-top: 0; }
+
+/* ---------- A free way in ---------- */
+.split--even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+.stack { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+.stack p { margin: 0; }
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field label { font-weight: 700; }
+.field input {
+  height: 48px; padding: 0 var(--space-4); width: 100%;
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: var(--border-strong) solid var(--ink); border-radius: 0; appearance: none;
+}
+.field input:focus { outline: 3px solid var(--ink); outline-offset: 3px; }
+.signup .btn { min-height: 48px; }
+.signup__status { grid-column: 1 / -1; margin: var(--space-3) 0 0; min-height: 1.5em; }
+
+/* ---------- Speaking invitation ---------- */
+.speaking .label { display: block; margin-bottom: var(--space-4); }
+.speaking__title { max-width: 14ch; }
+.speaking__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-5); margin-top: var(--space-6); border-top: var(--border-strong) solid var(--ink); padding-top: var(--space-5); }
+.speaking__row p { margin: 0; }
+
 /* ---------- Placeholder copy ---------- */
 .copy-to-come { margin: 0 0 var(--space-5); }
 
@@ -241,4 +277,10 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .pkg:last-child { border-bottom: 0; }
   .pkg--rec { order: -1; }
   .footer-links a { margin-left: 0; margin-right: var(--space-5); }
+  .split--even { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-4); }
+  .event__date, .event__title, .event__place { grid-column: 1; }
+  .event__arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+  .signup { grid-template-columns: 1fr; gap: var(--space-3); }
+  .signup .btn { justify-self: start; }
 }
