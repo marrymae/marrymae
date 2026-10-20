@@ -13,10 +13,9 @@ interface Props {
   current?: string;
   /** Hands-on offer pages and the FAQ are checked by a lawyer before launch. */
   legalReview?: boolean;
-  noindex?: boolean;
 }
 
-const { title, description, ground = 'paper', current, legalReview = false, noindex = false } = Astro.props;
+const { title, description, ground = 'paper', current, legalReview = false } = Astro.props;
 const fullTitle = title === 'Marry Mae' ? title : `${title} · Marry Mae`;
 ---
 
@@ -27,7 +26,8 @@ const fullTitle = title === 'Marry Mae' ? title : `${title} · Marry Mae`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
-    {noindex && <meta name="robots" content="noindex" />}
+    <!-- Preview only: keep search engines out until launch. Remove this and public/robots.txt at Stage 6. -->
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#DB2A14" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

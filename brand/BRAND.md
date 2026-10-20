@@ -40,7 +40,7 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 
 ## Components
 
-- **Menu:** wordmark left; links The method · 1:1 · Couples · Ritual Theatre · Library; a solid "Start here" button. 2px line under the menu. On phones: a square black menu button (44px) opening a full-screen black menu.
+- **Menu:** wordmark left; links The method · 1:1 · Couples · Events · Library (Ritual Theatre lives under Events); a solid "Start here" button. 2px line under the menu. On phones: a square black menu button (44px) opening a full-screen black menu.
 - **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`). Quiet links: `.link-arrow`.
 - **Method steps:** black band, 2px bright red line, numbers 01–05 in mono, step names in the display font, one short line each.
 - **Offer cards:** `.card` with a colour or photo block on top, label, title, one line, arrow link. Whole card is one link.
@@ -52,11 +52,22 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 
 ## Page plan
 
-Home · 1:1 · Couples · The method · Ritual Theatre · Library · About · FAQ · Start here (intake form, then €50 discovery call). An advanced-tier page comes later (name still open) and uses the darkest "deep end" volume: almost all black, red only in thin lines and single words.
+Home · 1:1 · Couples · The method · Events (with Ritual Theatre at /events/ritual-theatre) · Library · About · FAQ · Start here (intake form, then €50 discovery call) · Privacy. An advanced-tier page comes later (name still open) and uses the darkest "deep end" volume: almost all black, red only in thin lines and single words.
 
 ### Section rhythm (homepage)
 
-Blood hero → black method band → white "separate rooms" section → white offer cards → flesh quote panel → black footer.
+The homepage has eight sections, top to bottom, then the footer:
+
+1. **Identity line:** blood hero.
+2. **Belief:** white "separate rooms" section.
+3. **Signature idea:** black method band (the five steps).
+4. **Ways to work with me:** white offer cards (1:1 · Couples · Ritual Theatre).
+5. **Proof:** flesh quote panel with the photo of Marry.
+6. **Upcoming events:** black date list.
+7. **A free way in:** blood newsletter sign-up.
+8. **Speaking invitation:** white, for stages, festivals, workshops and podcasts.
+
+Then the black footer.
 
 ## Images
 
