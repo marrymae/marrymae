@@ -150,18 +150,19 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 
 /* ---------- Method steps ---------- */
 .method-head, .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-5); margin-bottom: var(--space-6); }
-.steps-wrap { position: relative; }
-.steps__line { position: absolute; left: 0; right: 0; top: 0; height: var(--border-strong); background: var(--blood-bright); transform-origin: left; }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
-.step { padding: var(--space-5) var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-7) var(--space-6); }
+.step { position: relative; padding-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+.step__rule { position: absolute; left: 0; right: 0; top: 0; height: var(--border-strong); background: var(--blood-bright); transform-origin: left; }
 .step__num { color: var(--blood-bright); }
 .step__name { display: inline-block; transition: color 0.4s var(--ease-out), transform 0.5s var(--ease-out); transform-origin: left bottom; }
 .step__line { color: var(--paper-soft); font-size: 1rem; line-height: 1.5; }
 .step:hover .step__name { font-style: italic; color: var(--blood-bright); transform: translateX(4px); }
 .method-page { padding-top: 0; }
-.method-page .step__line { display: block; }
+.method-intro { display: flex; flex-direction: column; gap: var(--space-4); max-width: var(--text-width); }
+.method-intro p { margin: 0; }
+.method-foot { margin-top: var(--space-6); }
 
-/* ---------- Separate rooms ---------- */
+/* ---------- Two-column text sections ---------- */
 .split { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); }
 .split p { margin: 0 0 var(--space-4); font-size: 1.125rem; font-weight: 500; }
 
@@ -169,7 +170,8 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .offers { padding: var(--space-8) 0 var(--space-9); }
 .offers > .container > .label { display: block; margin: 0; font-weight: 400; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-5); }
-.offer { transition: transform 0.5s var(--ease-out); }
+/* Hover uses `translate`, leaving `transform` free for the scroll animation. */
+.offer { transition: translate 0.5s var(--ease-out); }
 .offer__media { position: relative; overflow: hidden; }
 .offer__media > span { position: relative; z-index: 1; transition: transform 0.6s var(--ease-out); }
 .offer__media::before {
@@ -177,7 +179,7 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease-out);
 }
 .offer__media.photo--ink::before { background: var(--blood-bright); }
-.offer:hover { transform: translateY(-6px); }
+.offer:hover { translate: 0 -6px; }
 .offer:hover .offer__media::before { transform: scaleX(1); }
 .offer:hover .offer__media > span { transform: translateY(-4px); }
 .offer__title { transition: color 0.4s var(--ease-out); }
@@ -289,6 +291,15 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .sg-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); max-width: 880px; }
 .sg-form .field--wide { grid-column: 1 / -1; }
 
+/* ---------- Homepage copy ---------- */
+.prose { display: flex; flex-direction: column; gap: var(--space-4); max-width: var(--text-width); }
+.prose p { margin: 0; font-size: 1.125rem; font-weight: 500; }
+.offers__more { margin: var(--space-6) 0 0; font-size: 1.125rem; font-weight: 500; }
+.signup__small { grid-column: 1 / -1; margin: var(--space-3) 0 0; }
+.signup__small .link-arrow { min-height: 0; }
+/* Three buttons side by side share one border where two outlines meet. */
+.btn-pair .btn--outline + .btn--outline { border-left-width: 0; }
+
 /* ---------- Placeholder copy ---------- */
 .copy-to-come { margin: 0 0 var(--space-5); }
 
@@ -312,11 +323,7 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .hero, .split, .quote, .journey { grid-template-columns: 1fr; }
   .hero--home { min-height: 0; }
   .photo, .photo--hero { min-height: 300px; }
-  .steps { grid-template-columns: 1fr; }
-  .step { flex-direction: row; align-items: baseline; gap: var(--space-4); padding: var(--space-4) 0; border-bottom: var(--border-hairline) solid var(--ink-soft); }
-  .step__line { display: none; }
-  .method-page .step { flex-wrap: wrap; }
-  .method-page .step__line { flex-basis: 100%; }
+  .steps { grid-template-columns: 1fr; gap: var(--space-6); }
   .cards { grid-template-columns: 1fr; }
   .prices { grid-template-columns: 1fr; }
   .pkg { border-right: 0; border-bottom: var(--border-strong) solid var(--ink); }

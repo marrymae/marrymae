@@ -41,31 +41,31 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 ## Components
 
 - **Menu:** wordmark left; links The method · 1:1 · Couples · Events · Library (Ritual Theatre lives under Events); a solid "Start here" button. 2px line under the menu. On phones: a square black menu button (44px) opening a full-screen black menu.
-- **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`). Quiet links: `.link-arrow`.
-- **Method steps:** black band, 2px bright red line, six steps numbered 01–06 in mono (Slow · Feel · Speak · Meet · Flow · Tend), step names in the display font, one short line each. The second journey, Tend in depth with the ground and the six skills, lives on The method page, not the homepage.
+- **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`); the homepage hero has three (solid, outline, outline). Quiet links: `.link-arrow`.
+- **Method steps:** black band, 2px bright red line, six steps numbered 01–06 in mono (Slow · Feel · Speak · Meet · Flow · Tend), each with its own 2px bright red line above it, step names in the display font and a short paragraph each. On desktop they sit in two rows of three; on phones they stack. The second journey, Tend in depth with the ground and the six skills, lives on The method page, not the homepage.
 - **Offer cards:** `.card` with a colour or photo block on top, label, title, one line, arrow link. Whole card is one link.
 - **Price table:** one outlined box, packages side by side, one recommended package filled blood red with white text.
 - **Booking steps:** numbered 01–04 with a 2px line above each: Intake form → Discovery call → Agreement → Sessions.
 - **Quote panel:** flesh section, one brand phrase, black-and-white photo of Marry, short paragraph, link.
-- **Footer:** black; large wordmark; hi@marrymae.com, @marrymae, Lisbon in mono; FAQ, About, Privacy.
+- **Footer:** black; large wordmark; hi@marrymae.com, @marrymae, Lisbon in mono; Speaking, FAQ, About, Privacy.
 - **Forms (intake):** labels above fields in Hanken Grotesk 700; fields with 2px black border, square, white, 48px tall; help text in `.body-s`; focus = 3px black outline.
 
 ## Page plan
 
-Home · 1:1 · Couples · The method · Events (with Ritual Theatre at /events/ritual-theatre) · Library · About · FAQ · Start here (intake form, then €50 discovery call) · Privacy. An advanced-tier page comes later (name still open) and uses the darkest "deep end" volume: almost all black, red only in thin lines and single words.
+Home · 1:1 · Couples · The method · Events (with Ritual Theatre at /events/ritual-theatre) · Library · About · FAQ · Start here (intake form, then €50 discovery call) · Privacy · Speaking (not in the menu; linked from the homepage and the footer). An advanced-tier page comes later (name still open) and uses the darkest "deep end" volume: almost all black, red only in thin lines and single words.
 
 ### Section rhythm (homepage)
 
 The homepage has eight sections, top to bottom, then the footer:
 
-1. **Identity line:** blood hero.
-2. **Belief:** white "separate rooms" section.
-3. **Signature idea:** black method band (the five steps).
-4. **Ways to work with me:** white offer cards (1:1 · Couples · Ritual Theatre).
-5. **Proof:** flesh quote panel with the photo of Marry.
-6. **Upcoming events:** black date list.
-7. **A free way in:** blood newsletter sign-up.
-8. **Speaking invitation:** white, for stages, festivals, workshops and podcasts.
+1. **Hero:** blood. Identity line, intro and three buttons side by side: Come alone (solid) · Come together (outline) · Come watch (outline).
+2. **The idea:** white. "Mind-blowing sex can be learned."
+3. **The method:** black band, the six steps in two rows of three on desktop, stacked on phones.
+4. **Ways in:** white offer cards (1:1 · Couples · Ritual Theatre), with a line to the Library under them.
+5. **Proof:** flesh quote panel with the photo of Marry ("the person in the room"). Room for a short list of trainings and two or three anonymous quotes.
+6. **Upcoming:** black. A note about Ritual Theatre until there are dates, then the date list.
+7. **The letter:** blood newsletter sign-up.
+8. **Speaking teaser:** white, linking to the Speaking page.
 
 Then the black footer.
 
@@ -75,7 +75,7 @@ Black-and-white or duotone (black on flesh, black on blood), close, unposed, rea
 
 ## Words
 
-Follow the Marry Mae Voice Guide: real, warm, direct, bold, grounded. Short sentences. First person ("I guide…"). Never use "It's not X, it's Y" sentences, or the words "satisfaction" and "desire". No spiritual lingo, no clinical language, no wellness clichés. Keep tantra, kink and Shibari out of headlines; they appear only as credentials on About and FAQ. Copy for each page is written and approved in the Marry Mae Project before it goes into the code; use placeholder text marked [COPY TO COME] rather than inventing claims.
+Follow the Marry Mae Voice Guide: real, warm, direct, bold, grounded. Short sentences. First person ("I guide…"). Never use "It's not X, it's Y" sentences, or the words "satisfaction" and "desire". No spiritual lingo, no clinical language, no wellness clichés. Keep tantra and kink out of headlines. Credentials (sex therapist, relationship therapist, tantra teacher and kink educator) appear only on About and FAQ. Copy for each page is written and approved in the Marry Mae Project before it goes into the code; use placeholder text marked [COPY TO COME] rather than inventing claims.
 
 Prices are the final amount the client pays. Do not add "+ IVA" or tax wording until confirmed.
 

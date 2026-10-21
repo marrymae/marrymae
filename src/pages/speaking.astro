@@ -1,0 +1,11 @@
+---
+// Not in the main menu; linked from the homepage and the footer.
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CopyToCome from '../components/CopyToCome.astro';
+---
+
+<Layout title="Speaking" ground="paper">
+  <PageHero slot="hero" label="speaking and teaching" headline="Invite me to <em>your stage.</em>" />
+  <CopyToCome />
+</Layout>

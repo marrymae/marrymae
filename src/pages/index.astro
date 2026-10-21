@@ -1,8 +1,6 @@
 ---
-// The homepage follows the eight pillars, top to bottom:
-// 1 identity line · 2 belief · 3 signature idea · 4 ways to work with me
-// 5 proof · 6 upcoming events · 7 a free way in (newsletter) · 8 speaking invitation.
-// Copy marked as sample comes from brand/reference/homepage.html; swap in approved copy at Stage 3.
+// The homepage, top to bottom: hero · the idea · the method · ways in · proof · upcoming · the letter · speaking.
+// Approved copy; change wording only when Marry brings new copy.
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import Proof from '../components/Proof.astro';
@@ -14,52 +12,66 @@ import { url } from '../lib/url';
 ---
 
 <Layout
-  title="Marry Mae"
-  description="I guide singles and couples to connect heart and sex, in person and in the body, so your intimacy becomes real and your eroticism lasts."
+  title="Marry Mae · Erotic education for singles and couples in Lisbon"
+  description="In-person erotic education in Lisbon. Marry guides singles and couples to connect heart and sex, slow enough to stay in your body and indefinitely hot."
   ground="blood"
 >
-  <!-- 1 · Identity line -->
+  <!-- 1 · Hero -->
   <div class="hero hero--home" slot="hero">
     <div class="hero__text">
       <span class="label hero__label" data-type>singles · couples · lisbon</span>
       <h1 class="display-xl" data-split>Eroticism that lasts, <em>because it's real.</em></h1>
       <p class="body-l hero__intro" data-reveal>
-        I guide singles and couples to connect heart and sex, in person and in the body, so your intimacy becomes real and your eroticism lasts.
+        I'm Marry. I guide singles and couples to connect heart and sex, in person and in the body. Slow enough to stay in your body, real enough to be seen, and indefinitely hot.
       </p>
       <div class="btn-pair" data-reveal>
-        <a class="btn btn--solid" href={url('1-1')} data-magnetic>Work with me 1:1</a>
-        <a class="btn btn--outline" href={url('couples')} data-magnetic>Come as a couple</a>
+        <a class="btn btn--solid" href={url('1-1')} data-magnetic>Come alone</a>
+        <a class="btn btn--outline" href={url('couples')} data-magnetic>Come together</a>
+        <a class="btn btn--outline" href={url('events/ritual-theatre')} data-magnetic>Come watch</a>
       </div>
     </div>
     <Photo caption="photo: duotone, black on flesh pink, two bodies close" alt="Photo to come: two bodies close, duotone" tone="flesh" class="photo--hero" />
   </div>
 
-  <!-- 2 · Belief -->
-  <section class="on-paper section--quiet" aria-labelledby="belief-title">
+  <!-- 2 · The idea -->
+  <section class="on-paper section--quiet" aria-labelledby="idea-title">
     <div class="container split">
-      <h2 id="belief-title" class="display-m" data-split>Most of us keep heart and sex in <em>separate rooms.</em></h2>
+      <h2 id="idea-title" class="display-m" data-split>Mind-blowing sex <em>can be learned.</em></h2>
       <div class="split__text" data-stagger>
-        <p>Sex gets rushed, routine or performed. Feelings stay on another track. Something in you knows there is more.</p>
-        <p>I teach you to slow down, say what is true and let a real erotic current move, then how to keep it alive for years.</p>
+        <p>You want passionate, mind-blowing, leaves-you-a-little-altered sex. Who doesn't?</p>
+        <p>That kind of sex rarely just happens. It takes a little know-how. Knowledge and skill, basically, and both can be learned.</p>
+        <p>Connecting Heart and Sex is one way there. It's the one I teach.</p>
       </div>
     </div>
   </section>
 
-  <!-- 3 · Signature idea -->
+  <!-- 3 · The method -->
   <section class="on-ink section" aria-labelledby="method-title">
     <div class="container">
       <div class="method-head">
-        <h2 id="method-title" class="display-m" data-split>Connecting <em>heart and sex</em></h2>
-        <a class="link-arrow" href={url('method')} data-reveal>How the method works</a>
+        <div class="stack">
+          <span class="label hero__label" data-type>the method</span>
+          <h2 id="method-title" class="display-m" data-split>Connecting heart <em>and sex.</em></h2>
+        </div>
+        <div class="method-intro" data-stagger>
+          <p>Here's what I've seen over and over: when people go through the heart first, the sex gets hotter. (Yes, really.)</p>
+          <p>Six steps, through the heart, into the sex, and into your life.</p>
+        </div>
       </div>
       <MethodSteps />
+      <div class="method-foot">
+        <a class="link-arrow" href={url('method')} data-reveal>How the method works</a>
+      </div>
     </div>
   </section>
 
-  <!-- 4 · Ways to work with me -->
+  <!-- 4 · Ways in -->
   <section class="on-paper offers" aria-labelledby="offers-title">
     <div class="container">
-      <h2 id="offers-title" class="label" data-type>ways to work with me</h2>
+      <div class="stack">
+        <span class="label" data-type>ways to work with me</span>
+        <h2 id="offers-title" class="display-m" data-split>Pick your <em>way in.</em></h2>
+      </div>
       <div class="cards" data-stagger>
         <OfferCard
           href="1-1"
@@ -67,7 +79,7 @@ import { url } from '../lib/url';
           caption="one body, slow light"
           label="1:1 · from 8 hours · from €890"
           title="1:1"
-          line="Deep, in-person erotic education for you alone, in my space in Lisbon."
+          line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take."
           cta="Explore 1:1"
         />
         <OfferCard
@@ -76,43 +88,42 @@ import { url } from '../lib/url';
           caption="two hands, close"
           label="couples · first session €590"
           title="Couples"
-          line="Learn to reach each other again. In Lisbon, or I come to you."
+          line="Four hours lay the groundwork; up to 16 walk the whole first journey. In Lisbon, or I come to you."
           cta="Explore couples work"
         />
         <OfferCard
           href="events/ritual-theatre"
           tone="ink"
           caption="performers in low light"
-          label="events · monthly · lisbon"
+          label="monthly · lisbon"
           title="Ritual Theatre"
-          line="Erotic ritual art without words. You write the prompts; we play them out."
-          cta="See the next show"
+          line="Erotic ritual art, without words. You write the prompts, we play them out. You just get to watch (and feel things)."
+          cta="About Ritual Theatre"
         />
       </div>
+      <p class="offers__more" data-reveal>Rather start at home? <a class="link-arrow" href={url('library')}>The Library</a></p>
     </div>
   </section>
 
   <!-- 5 · Proof. Trainings and anonymous quotes live in src/data/proof.ts. -->
   <Proof />
 
-  <!-- 6 · Upcoming events -->
-  <section class="on-ink section" aria-labelledby="events-title">
+  <!-- 6 · Upcoming. Becomes the date list once dates are added in src/data/events.ts. -->
+  <section class="on-ink section" aria-label="Upcoming">
     <div class="container">
-      <div class="method-head">
-        <h2 id="events-title" class="display-m" data-split>Upcoming <em>events</em></h2>
-        <a class="link-arrow" href={url('events')} data-reveal>All events</a>
-      </div>
       <EventList />
     </div>
   </section>
 
-  <!-- 7 · A free way in -->
-  <section class="on-blood section" aria-labelledby="free-title">
+  <!-- 7 · The letter -->
+  <section class="on-blood section" aria-labelledby="letter-title">
     <div class="container split split--even">
       <div class="stack">
-        <span class="label" data-type>newsletter</span>
-        <h2 id="free-title" class="display-m" data-split>A free way <em>in</em></h2>
-        <p class="body-l" data-reveal>[COPY TO COME]</p>
+        <span class="label" data-type>the letter</span>
+        <h2 id="letter-title" class="display-m" data-split>The stuff I <em>don't post.</em></h2>
+        <p class="body-l" data-reveal>
+          Letters from my own sex life and practice. The experiments, the awkward bits, what I'm learning right now, and Ritual Theatre dates before anyone else. They're long (I don't really do short), and they come whenever there's something worth telling you.
+        </p>
       </div>
       <div data-reveal>
         <Newsletter />
@@ -120,14 +131,14 @@ import { url } from '../lib/url';
     </div>
   </section>
 
-  <!-- 8 · Speaking invitation -->
+  <!-- 8 · Speaking -->
   <section class="on-paper section--quiet speaking" aria-labelledby="speaking-title">
     <div class="container">
-      <span class="label" data-type>stage · festival · workshop · podcast</span>
+      <span class="label" data-type>speaking and teaching</span>
       <h2 id="speaking-title" class="display-l speaking__title" data-split>Invite me to <em>your stage.</em></h2>
       <div class="speaking__row">
-        <p class="body-l" data-reveal>[COPY TO COME]</p>
-        <a class="btn btn--solid" href="mailto:hi@marrymae.com?subject=Speaking%20invitation" data-reveal data-magnetic>hi@marrymae.com</a>
+        <p class="body-l" data-reveal>Festivals, conferences, workshops, podcasts. I bring slowness, honest talk about sex, and a room that feels a lot more alive by the end.</p>
+        <a class="link-arrow" href={url('speaking')} data-reveal>Speaking</a>
       </div>
     </div>
   </section>

@@ -21,7 +21,7 @@ const { title, description, ground = 'paper', current, legalReview = false, hidd
 
 // Preview: keep search engines out of every page until launch. At Stage 6 set this to false and delete public/robots.txt.
 const PREVIEW = true;
-const fullTitle = title === 'Marry Mae' ? title : `${title} · Marry Mae`;
+const fullTitle = title.startsWith('Marry Mae') ? title : `${title} · Marry Mae`;
 ---
 
 <!doctype html>
