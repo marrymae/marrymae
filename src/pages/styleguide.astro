@@ -12,17 +12,13 @@ import EventList from '../components/EventList.astro';
 import Newsletter from '../components/Newsletter.astro';
 import Photo from '../components/Photo.astro';
 import tokens from '../../brand/tokens.json';
+import { couples, oneToOne, packageLabel, euro, tasterFrom } from '../data/packages';
 
 const colours = tokens.color.tokens;
 const typeStyles = tokens.type.groups.flatMap((g) => g.styles).filter((t) => t.name !== 'nav' && t.name !== 'button' && t.name !== 'label-s');
 const typeClass: Record<string, string> = { body: '' };
 
-const packages = [
-  { label: 'first session', title: '4 hours', price: '€590', note: 'Credited in full if you continue within 14 days.' },
-  { label: 'package', title: '8 hours', price: '€990', note: 'Two instalments available.' },
-  { label: 'recommended', title: '12 hours', price: '€1,350', note: 'Room to go deep and take it home. Three instalments available.', recommended: true },
-  { label: 'package', title: '16 hours', price: '€1,590', note: 'The full arc, spread over weeks. Three instalments available.' },
-];
+const packages = couples.map((p) => ({ label: packageLabel(p), price: euro(p.price), recommended: p.recommended }));
 const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
 ---
 
@@ -111,8 +107,8 @@ const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
       <div class="sg-block">
         <div class="sg-head"><span class="label">06 · offer cards</span></div>
         <div class="cards">
-          <OfferCard href="1-1" tone="blood" caption="one body, slow light" label="1:1 · from 8 hours · from €890" title="1:1" line="Deep, in-person erotic education for you alone, in my space in Lisbon." cta="Explore 1:1" />
-          <OfferCard href="couples" tone="flesh" caption="two hands, close" label="couples · first session €590" title="Couples" line="Learn to reach each other again. In Lisbon, or I come to you." cta="Explore couples work" />
+          <OfferCard href="1-1" tone="blood" caption="one body, slow light" label={`1:1 · taster from ${tasterFrom(oneToOne)}`} title="1:1" line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take." cta="Explore 1:1" />
+          <OfferCard href="couples" tone="flesh" caption="two hands, close" label={`couples · taster from ${tasterFrom(couples)}`} title="Couples" line="Four hours lay the groundwork; up to 16 walk the whole first journey. In Lisbon, or I come to you." cta="Explore couples work" />
           <OfferCard href="events/ritual-theatre" tone="ink" caption="performers in low light" label="events · monthly · lisbon" title="Ritual Theatre" line="Erotic ritual art without words. You write the prompts; we play them out." cta="See the next show" />
         </div>
       </div>

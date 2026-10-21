@@ -1,50 +1,211 @@
 ---
 // LEGAL REVIEW: hands-on offer page. Final wording is checked by a lawyer before launch.
-// Copy and prices on this page are the sample copy from brand/reference/couples.html.
+// Approved copy; change wording only when Marry brings new copy. Prices come from src/data/packages.ts.
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import PriceTable from '../components/PriceTable.astro';
 import BookingSteps from '../components/BookingSteps.astro';
+import Accordion from '../components/Accordion.astro';
 import { url } from '../lib/url';
+import { couples, packageLabel, euro } from '../data/packages';
 
+// The deep end (section 7) is a scope change under legal review.
+// It must be switched OFF (false) before launch unless Marry confirms the lawyer has cleared it.
+const showDeepEnd = true;
+
+const [sniff, journeyOne, journeyTwo] = couples;
 const packages = [
-  { label: 'first session', title: '4 hours', price: '€590', note: 'Credited in full if you continue within 14 days.' },
-  { label: 'package', title: '8 hours', price: '€990', note: 'Two instalments available.' },
-  { label: 'recommended', title: '12 hours', price: '€1,350', note: 'Room to go deep and take it home. Three instalments available.', recommended: true },
-  { label: 'package', title: '16 hours', price: '€1,590', note: 'The full arc, spread over weeks. Three instalments available.' },
+  {
+    label: packageLabel(sniff),
+    price: euro(sniff.price),
+    paragraphs: [
+      'For the curious, and for the partner who isn\'t quite sure yet. One afternoon to find out what this is.',
+      'You\'ll slow down together (properly), say at least one true thing out loud and be met in it, feel how differently touch lands when nobody\'s rushing, and go home with one practice that came out of your session. Think of it as a taste. The meal is journey one.',
+    ],
+    small: 'If you continue within 14 days, all of it counts towards journey one.',
+  },
+  {
+    label: packageLabel(journeyOne),
+    price: euro(journeyOne.price),
+    recommended: journeyOne.recommended,
+    paragraphs: [
+      'All six steps, usually two long days of five hours each. This is where things actually change.',
+      'You\'ll leave with a shared language for what you want and what\'s in the way, a way back to each other when it goes sideways, the felt experience of staying present while it gets hot, and a practice that\'s yours.',
+    ],
+  },
+  {
+    label: packageLabel(journeyTwo),
+    price: euro(journeyTwo.price),
+    paragraphs: [
+      'Tend in depth, once journey one has become yours. Four long days in the skills that keep it indefinitely hot: energy, touch, range, play, pacing and practice.',
+      'The stuff most people never get taught.',
+    ],
+  },
+];
+
+const beginSteps = [
+  { name: 'Intake form', line: 'A few questions each: who you are, what you want, your boundaries.' },
+  { name: 'Discovery call', line: '45 minutes, €50, credited in full if you book. Bring the questions. Bring the nerves.' },
+  { name: 'Agreement and payment', line: 'Everything in writing, payment plans if you want them.' },
+  { name: 'Questionnaires', line: 'One each, one together. They shape your sessions.' },
+  { name: 'Sessions' },
+];
+
+const questions = [
+  { q: '"One of us is way more into this than the other."', a: 'Very common. The sniff and the discovery call exist for exactly this. Nobody gets dragged in, and nobody is the problem.' },
+  { q: '"Is this therapy?"', a: 'It\'s education. I\'m a trained sex therapist and relationship therapist, and that skill is in the room with us. You\'re here to learn and practise.' },
+  { q: '"Is it confidential?"', a: 'Yes. What happens in the room stays between us, and it\'s in the agreement.' },
+  { q: '"Do we have to get naked?"', a: '[COPY TO COME]' },
+  { q: '"Will we have sex in front of you?"', a: '[COPY TO COME]' },
+  { q: '"What if it gets awkward?"', a: 'It will, a little. Awkward is usually where the good stuff is hiding. We slow down and go from there.' },
 ];
 ---
 
 <Layout
-  title="Couples"
-  description="Slow down together, say what is true and let an erotic current move between you."
+  title="Couples · Marry Mae · Erotic education for couples in Lisbon"
+  description="In-person erotic education for couples in Lisbon, or at your place. Start with a 4-hour taster or walk journey one in 10 hours. Every kind of couple welcome."
   ground="ink"
   current="couples"
   legalReview
 >
+  <!-- 1 · Hero -->
   <PageHero
     slot="hero"
     label="couples · in person · lisbon or at your place"
-    headline="Reach each other <em>again.</em>"
-    intro="Slow down together, say what is true and let an erotic current move between you. I teach, guide and demonstrate; you practise on each other."
-    photo={{ caption: 'photo: a couple, foreheads touching', alt: 'Photo to come: a couple, foreheads touching', tone: 'blood' }}
-  />
+    headline="Come <em>together.</em>"
+    intro="Erotic education for couples who want more than the version of sex they've been running on. In person, in the body, and a lot hotter than you'd expect from anything with the word education in it."
+    photo={{ caption: 'photo: a couple, close, duotone', alt: 'Photo to come: a couple, close, duotone', tone: 'blood' }}
+  >
+    <div class="btn-pair" data-reveal>
+      <a class="btn btn--solid" href={url('start')} data-magnetic>Start with the intake form →</a>
+      <a class="btn btn--outline" href="#packages" data-magnetic>See the packages ↓</a>
+    </div>
+  </PageHero>
 
-  <section class="on-paper section" aria-labelledby="depth-title">
-    <div class="container">
-      <div class="head">
-        <h2 id="depth-title" class="display-m" data-split>You choose <em>the depth.</em></h2>
-        <span class="label" data-reveal>sessions of 4 to 8 hours each · payment plans with no surcharge</span>
+  <!-- 2 · Where you are -->
+  <section class="on-paper section--quiet" aria-labelledby="where-title">
+    <div class="container split">
+      <h2 id="where-title" class="display-m" data-split>Let me guess <em>where you are.</em></h2>
+      <div class="prose" data-stagger>
+        <p>You love each other. You still want each other (most days). And somewhere along the way, sex got a little bit beige.</p>
+        <p>Maybe it's routine. Maybe it's rushed. Maybe one of you wants more and doesn't quite know how to say it. Maybe there's a baby, an affair, a new agreement, or just years of life sitting on the bed between you.</p>
+        <p>Or maybe you're brand new, still in the delicious bit, and you already know you don't want to end up like everyone else.</p>
+        <p>Here's the thing: heart and sex rarely end up in the same bed by accident. It takes a little know-how. And know-how can be learned.</p>
       </div>
-      <PriceTable packages={packages} />
     </div>
   </section>
 
+  <!-- 3 · Who comes to me -->
+  <section class="on-flesh section--quiet" aria-labelledby="who-title">
+    <div class="container split">
+      <h2 id="who-title" class="display-m" data-split>Every kind of couple. <em>Every kind of hungry.</em></h2>
+      <div class="prose" data-stagger>
+        <p>Long-term couples who want the heat back. New couples who want to start the way they mean to go on. Queer couples. Non-monogamous couples, and couples opening up. Couples after a baby, after an affair, after a long dry spell. Couples who've done the workshops, the temples, the play parties, and are ready to go further.</p>
+        <p>What you have in common: you want a life in the erotic world. More range, more depth, more of what's possible in the bedroom, and well beyond it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Beginners and deep-enders -->
+  <section class="on-paper section--quiet" aria-labelledby="feral-title">
+    <div class="container">
+      <h2 id="feral-title" class="display-m columns-title" data-split>Brand new to this, or <em>already a little feral?</em></h2>
+      <div class="columns" data-stagger>
+        <div class="column">
+          <span class="label">if this is all new</span>
+          <p>You don't need to know anything, and you don't need to be good at anything. We start slow (slower than you think), and you'll be surprised how much is already there between you.</p>
+        </div>
+        <div class="column">
+          <span class="label">if you've done the work</span>
+          <p>You know your way around a breath practice and a consent conversation. Good. We move through the groundwork faster and spend our hours where it gets interesting. Energy, range, edge, the parts most workshops never reach.</p>
+        </div>
+      </div>
+      <p class="columns-foot body-l" data-reveal>Either way, you walk the same six steps. How fast and how deep is up to you.</p>
+    </div>
+  </section>
+
+  <!-- 5 · What happens in the room -->
+  <section class="on-ink section--quiet" aria-labelledby="room-title">
+    <div class="container">
+      <div class="split">
+        <h2 id="room-title" class="display-m" data-split>What happens in the room. <em>(Mostly.)</em></h2>
+        <div class="prose" data-stagger>
+          <p>Every session has the same shape. We open, we move, we close.</p>
+          <p>We open by arriving. You leave the outside world at the door, drop into your bodies, and we make our agreements about what's part of today.</p>
+          <p>We move through the six steps: Slow, Feel, Speak, Meet, Flow, Tend. You slow down together, notice what's actually there, name the things that never got said, and get seen by each other. And then the erotic current usually takes it from there. What exactly that looks like? Every imprint is unique, and so is every erotic unfolding. (Some things are better felt than read.)</p>
+          <p>We close properly, and you go home with something to practise that came out of your own session.</p>
+        </div>
+      </div>
+      <div class="touch-box" data-reveal>
+        <span class="label">about touch, plainly</span>
+        <ul>
+          <li>You touch each other. That's the centre of the work.</li>
+          <li>I teach, guide and demonstrate, and I work hands-on with you too, for example giving a massage together with one of you while the other learns.</li>
+          <li>You don't touch me.</li>
+          <li>Everything is agreed before we start, in writing, and either of you can say yes, no or wait at any moment. Strong agreements are in place, always.</li>
+        </ul>
+      </div>
+      <p class="touch-foot body-l" data-reveal>This is erotic education: you come to learn, practise and take it home.</p>
+    </div>
+  </section>
+
+  <!-- 6 · The packages -->
+  <section class="on-paper section" id="packages" aria-labelledby="depth-title">
+    <div class="container">
+      <div class="head">
+        <h2 id="depth-title" class="display-m" data-split>You choose <em>the depth.</em></h2>
+        <p class="body-l head__intro" data-reveal>Most couples start with journey one. Some want a little sniff first. Both are good.</p>
+      </div>
+      <PriceTable packages={packages} />
+      <p class="body-s prices__small" data-reveal>In Lisbon, or I come to you at the same price. Payment plans with no surcharge: two instalments for the sniff, three for each journey.</p>
+    </div>
+  </section>
+
+  <!-- 7 · The deep end -->
+  {showDeepEnd && (
+    <Fragment>
+      <Fragment set:html="<!-- LEGAL REVIEW: scope change -->" />
+      <section class="on-ink section--quiet" aria-labelledby="deep-title">
+        <div class="container split">
+          <h2 id="deep-title" class="display-m" data-split>And then there's <em>the deep end.</em></h2>
+          <div class="prose" data-stagger>
+            <p>For couples who've walked journey two, or who arrive already seasoned, there's a deeper level. Power and surrender. Edge and intensity. Erotic ritual and ceremony.</p>
+            <p>This is where my work as an erotic educator goes furthest. I teach with my own body as well as my words, and mutual touch can be part of it, always negotiated in detail and agreed in writing before we begin. In my space only.</p>
+            <p>More on that soon. Or ask me on the discovery call.</p>
+          </div>
+        </div>
+      </section>
+      <Fragment set:html="<!-- /LEGAL REVIEW: scope change -->" />
+    </Fragment>
+  )}
+
+  <!-- 8 · Where -->
+  <section class="on-flesh section--quiet" aria-labelledby="space-title">
+    <div class="container split">
+      <h2 id="space-title" class="display-m" data-split>My space, <em>or yours.</em></h2>
+      <div class="prose" data-stagger>
+        <p>In Lisbon, or I come to you, at the same price.</p>
+        <p>If I come to you, here's what the room needs: a mattress on the floor, heating on, soft lighting, a space where nobody will knock for the whole session, and a speaker.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · How we begin -->
   <section class="on-blood section" aria-labelledby="begin-title">
     <div class="container">
-      <h2 id="begin-title" class="display-m" data-split>How we <em>begin</em></h2>
-      <BookingSteps />
-      <a class="btn btn--solid" href={url('start')} data-reveal data-magnetic>Start with the intake form</a>
+      <h2 id="begin-title" class="display-m" data-split>How we <em>begin.</em></h2>
+      <BookingSteps steps={beginSteps} />
+      <a class="btn btn--solid" href={url('start')} data-reveal data-magnetic>Start with the intake form →</a>
+    </div>
+  </section>
+
+  <!-- 10 · Questions -->
+  <Fragment set:html="<!-- LEGAL REVIEW -->" />
+  <section class="on-paper section--quiet" aria-labelledby="questions-title">
+    <div class="container">
+      <h2 id="questions-title" class="display-m columns-title" data-split>Questions couples <em>actually ask.</em></h2>
+      <Accordion items={questions} />
+      <a class="link-arrow faq-more" href={url('faq')} data-reveal>More questions</a>
     </div>
   </section>
 </Layout>

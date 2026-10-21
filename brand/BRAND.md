@@ -44,8 +44,9 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 - **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`); the homepage hero has three (solid, outline, outline). Quiet links: `.link-arrow`.
 - **Method steps:** black band, 2px bright red line, six steps numbered 01–06 in mono (Slow · Feel · Speak · Meet · Flow · Tend), each with its own 2px bright red line above it, step names in the display font and a short paragraph each. On desktop they sit in two rows of three; on phones they stack. The second journey, Tend in depth with the ground and the six skills, lives on The method page, not the homepage.
 - **Offer cards:** `.card` with a colour or photo block on top, label, title, one line, arrow link. Whole card is one link.
-- **Price table:** one outlined box, packages side by side, one recommended package filled blood red with white text.
-- **Booking steps:** numbered 01–04 with a 2px line above each: Intake form → Discovery call → Agreement → Sessions.
+- **Price table:** one outlined box, three packages side by side (label, large price, short text, small print), the recommended package filled blood red with white text. On phones the recommended package comes first.
+- **Booking steps:** numbered, with a 2px line above each. The Couples page has five: Intake form → Discovery call → Agreement and payment → Questionnaires → Sessions. Start here still shows the earlier four (Intake form → Discovery call → Agreement → Sessions).
+- **Questions (accordion):** questions open one at a time; an open question turns italic, with a small mono open / close on the right. No icons.
 - **Quote panel:** flesh section, one brand phrase, black-and-white photo of Marry, short paragraph, link.
 - **Footer:** black; large wordmark; hi@marrymae.com, @marrymae, Lisbon in mono; Speaking, FAQ, About, Privacy.
 - **Forms (intake):** labels above fields in Hanken Grotesk 700; fields with 2px black border, square, white, 48px tall; help text in `.body-s`; focus = 3px black outline.
@@ -69,6 +70,22 @@ The homepage has eight sections, top to bottom, then the footer:
 
 Then the black footer.
 
+## Packages
+
+All prices live in one file, `src/data/packages.ts`. Change them there only.
+
+| | A little sniff | Journey one (recommended) | Journey two |
+| --- | --- | --- | --- |
+| Couples | 4 hours · €590 · two instalments | 10 hours · €1,190 · three instalments (usually two 5-hour days) | 20 hours · €1,950 · three instalments (usually four 5-hour days) |
+| 1:1 | 4 hours · €490 · two instalments | 10 hours · €1,050 · three instalments | 20 hours · €1,750 · three instalments |
+
+- Taster credit: if they continue within 14 days, the sniff counts towards journey one.
+- Payment plans have no surcharge.
+- Journey one is the six steps: Slow, Feel, Speak, Meet, Flow, Tend.
+- Journey two is Tend in depth (energy, touch, range, play, pacing, practice). Journey two is not the advanced tier.
+- Advanced tier, after journey two: 8 / 12 / 16 hours. 1:1 €990 / €1,350 / €1,650; couples €1,090 / €1,490 / €1,790. In Marry's space only. No page for it yet.
+- Homepage card labels: "1:1 · taster from €490" and "couples · taster from €590".
+
 ## Images
 
 Black-and-white or duotone (black on flesh, black on blood), close, unposed, real skin. Until photos exist, use solid colour blocks with a small mono caption describing the intended photo. Never stock photos, spiritual props, glossy retouched sensuality or anything that would break Instagram's nudity rules (the site and social share images).
@@ -83,6 +100,7 @@ Prices are the final amount the client pays. Do not add "+ IVA" or tax wording u
 
 - Every hands-on offer page and the FAQ make the education framing clear. Final wording of these pages is checked by a lawyer before launch: mark them `<!-- LEGAL REVIEW -->` in the code.
 - Never put client names, stories or photos on the site.
+- **The deep end (Couples page, section 7)** is a scope change, wrapped in `<!-- LEGAL REVIEW: scope change -->`. It has one on/off switch, `showDeepEnd` at the top of `src/pages/couples.astro`. It is on in the preview and must be switched off before launch unless Marry confirms the lawyer has cleared it.
 - Contact email: hi@marrymae.com.
 
 ## Technical

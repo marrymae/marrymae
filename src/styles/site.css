@@ -202,9 +202,11 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .pkg:not(.pkg--rec):hover { background: var(--flesh); }
 .pkg--rec { color: var(--paper); }
 .pkg__fill { position: absolute; inset: 0; z-index: -1; background: var(--blood); }
+.pkg__text { margin: 0; }
+.pkg__small { margin: auto 0 0; padding-top: var(--space-3); }
 
 /* ---------- Booking steps ---------- */
-.journey { list-style: none; margin: var(--space-6) 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+.journey { list-style: none; margin: var(--space-6) 0; padding: 0; display: grid; grid-template-columns: repeat(var(--count, 4), minmax(0, 1fr)); gap: var(--space-6); }
 .journey li { position: relative; padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
 .journey__line { position: absolute; left: 0; right: 0; top: 0; height: var(--border-strong); background: var(--ink); transform-origin: left; }
 .journey strong { font-size: 1.375rem; }
@@ -300,6 +302,39 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 /* Three buttons side by side share one border where two outlines meet. */
 .btn-pair .btn--outline + .btn--outline { border-left-width: 0; }
 
+/* ---------- Offer pages ---------- */
+.head__intro { margin: 0; }
+.columns-title { max-width: 18ch; margin-bottom: var(--space-6); }
+.columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-7); }
+.column { border-top: var(--border-strong) solid var(--ink); padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+.column p { margin: 0; font-size: 1.125rem; font-weight: 500; }
+.columns-foot { margin: var(--space-7) 0 0; max-width: none; }
+.touch-box { margin-top: var(--space-8); border: var(--border-strong) solid var(--blood-bright); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+.touch-box .label { color: var(--blood-bright); }
+.touch-box ul { list-style: none; margin: 0; padding: 0; }
+.touch-box li { padding: var(--space-3) 0; border-top: var(--border-hairline) solid var(--ink-soft); font-size: 1.125rem; font-weight: 500; }
+.touch-box li:first-child { border-top: 0; padding-top: 0; }
+.touch-foot { margin: var(--space-5) 0 0; max-width: none; }
+.prices__small { margin: var(--space-4) 0 0; }
+.faq-more { margin-top: var(--space-5); }
+
+/* Questions accordion */
+.acc { border-top: var(--border-strong) solid var(--ink); interpolate-size: allow-keywords; }
+.acc__item { border-bottom: var(--border-hairline) solid var(--ink-soft); }
+.acc__q {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-5);
+  padding: var(--space-5) 0; min-height: var(--touch-target);
+}
+.acc__q::-webkit-details-marker { display: none; }
+.acc__text { font-family: var(--font-display); font-size: var(--size-display-s); line-height: 1.1; transition: color 0.4s var(--ease-out); }
+.acc__q:hover .acc__text, .acc__item[open] .acc__text { font-style: italic; color: var(--blood-text); }
+.acc__state { flex: none; }
+.acc__close, .acc__item[open] .acc__open { display: none; }
+.acc__item[open] .acc__close { display: inline; }
+.acc__a p { margin: 0 0 var(--space-5); max-width: var(--text-width); font-size: 1.125rem; font-weight: 500; }
+.acc__item::details-content { block-size: 0; overflow: clip; transition: block-size 0.5s var(--ease-out), content-visibility 0.5s allow-discrete; }
+.acc__item[open]::details-content { block-size: auto; }
+
 /* ---------- Placeholder copy ---------- */
 .copy-to-come { margin: 0 0 var(--space-5); }
 
@@ -331,6 +366,8 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .pkg--rec { order: -1; }
   .footer-links a { margin-left: 0; margin-right: var(--space-5); }
   .split--even { grid-template-columns: 1fr; }
+  .columns { grid-template-columns: 1fr; gap: var(--space-6); }
+  .touch-box { padding: var(--space-5); }
   .sg-type > div, .sg-grounds, .sg-form { grid-template-columns: 1fr; }
   .event { grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-4); }
   .event__date, .event__title, .event__place { grid-column: 1; }

@@ -9,6 +9,7 @@ import OfferCard from '../components/OfferCard.astro';
 import EventList from '../components/EventList.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { url } from '../lib/url';
+import { couples, oneToOne, tasterFrom } from '../data/packages';
 ---
 
 <Layout
@@ -77,7 +78,7 @@ import { url } from '../lib/url';
           href="1-1"
           tone="blood"
           caption="one body, slow light"
-          label="1:1 · from 8 hours · from €890"
+          label={`1:1 · taster from ${tasterFrom(oneToOne)}`}
           title="1:1"
           line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take."
           cta="Explore 1:1"
@@ -86,7 +87,7 @@ import { url } from '../lib/url';
           href="couples"
           tone="flesh"
           caption="two hands, close"
-          label="couples · first session €590"
+          label={`couples · taster from ${tasterFrom(couples)}`}
           title="Couples"
           line="Four hours lay the groundwork; up to 16 walk the whole first journey. In Lisbon, or I come to you."
           cta="Explore couples work"
