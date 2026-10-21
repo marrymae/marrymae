@@ -5,23 +5,23 @@ import { upcoming, formatDate } from '../data/events';
 const list = upcoming();
 ---
 
-<ul class="events" data-stagger>
-  {list.map((e) => (
-    <li>
-      <a class="event" href={e.href ? url(e.href) : url('events')}>
-        <span class="label event__date">{formatDate(e.date)}</span>
-        <span class="display-s event__title">{e.title}</span>
-        <span class="label event__place">{e.place}</span>
-        <span class="link-arrow event__arrow" aria-hidden="true"></span>
-      </a>
-    </li>
-  ))}
-  <li>
-    <a class="event" href={url('events/ritual-theatre')}>
-      <span class="label event__date">monthly · lisbon</span>
-      <span class="display-s event__title">Ritual Theatre</span>
-      <span class="body-s event__place">[COPY TO COME]</span>
-      <span class="link-arrow event__arrow" aria-hidden="true"></span>
-    </a>
-  </li>
-</ul>
+{list.length > 0 ? (
+  <ul class="events" data-stagger>
+    {list.map((e) => (
+      <li>
+        <a class="event" href={e.href ? url(e.href) : url('events')}>
+          <span class="label event__date">{formatDate(e.date)}</span>
+          <span class="display-s event__title">{e.title}</span>
+          <span class="label event__place">{e.place}</span>
+          <span class="link-arrow event__arrow" aria-hidden="true"></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+) : (
+  <div class="events events--soon" data-stagger>
+    <span class="label">upcoming</span>
+    <p class="body-l">Ritual Theatre, erotic ritual art without words, opens in Lisbon soon. Dates and tickets will appear here first.</p>
+    <a class="link-arrow" href={url('events/ritual-theatre')}>About Ritual Theatre</a>
+  </div>
+)}

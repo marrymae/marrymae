@@ -1,0 +1,188 @@
+---
+// Hidden review page: every building block of the site in one place.
+// Not in the menu, and kept out of search engines even after launch.
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import MethodSteps from '../components/MethodSteps.astro';
+import OfferCard from '../components/OfferCard.astro';
+import PriceTable from '../components/PriceTable.astro';
+import BookingSteps from '../components/BookingSteps.astro';
+import Proof from '../components/Proof.astro';
+import EventList from '../components/EventList.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Photo from '../components/Photo.astro';
+import tokens from '../../brand/tokens.json';
+
+const colours = tokens.color.tokens;
+const typeStyles = tokens.type.groups.flatMap((g) => g.styles).filter((t) => t.name !== 'nav' && t.name !== 'button' && t.name !== 'label-s');
+const typeClass: Record<string, string> = { body: '' };
+
+const packages = [
+  { label: 'first session', title: '4 hours', price: '€590', note: 'Credited in full if you continue within 14 days.' },
+  { label: 'package', title: '8 hours', price: '€990', note: 'Two instalments available.' },
+  { label: 'recommended', title: '12 hours', price: '€1,350', note: 'Room to go deep and take it home. Three instalments available.', recommended: true },
+  { label: 'package', title: '16 hours', price: '€1,590', note: 'The full arc, spread over weeks. Three instalments available.' },
+];
+const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
+---
+
+<Layout title="Styleguide" ground="paper" hidden>
+  <PageHero
+    slot="hero"
+    label="hidden · for review · not in the menu"
+    headline="The <em>styleguide</em>"
+    intro="Every building block of the site, in one place. The menu above and the footer below are the real ones."
+  />
+
+  <section class="on-paper section">
+    <div class="container">
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">01 · colour</span><h2 class="display-s">Colours</h2></div>
+        <div class="sg-swatches">
+          {colours.map((c) => (
+            <div class="sg-swatch">
+              <div class="sg-swatch__chip" style={`background: var(--${c.name})`}></div>
+              <div class="sg-swatch__info">
+                <strong>--{c.name}</strong>
+                <span class="label">{c.value.toLowerCase()}</span>
+                <span class="body-s">{c.usage}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">02 · type</span><h2 class="display-s">Type</h2></div>
+        <div class="sg-type">
+          {typeStyles.map((t) => (
+            <div>
+              <span class="label">.{t.name} · {t.fontSize}</span>
+              <p class={typeClass[t.name] ?? t.name}>{t.sample}</p>
+            </div>
+          ))}
+          <div>
+            <span class="label">headline + em</span>
+            <p class="display-m">Most of us keep heart and sex in <em>separate rooms.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">03 · buttons and links</span><h2 class="display-s">Buttons on every ground</h2></div>
+        <div class="sg-grounds">
+          {grounds.map((g) => (
+            <div class={`on-${g}`}>
+              <span class="label">.on-{g}</span>
+              <div class="btn-pair">
+                <a class="btn btn--solid" href="#">Book a discovery call</a>
+                <a class="btn btn--outline" href="#">Come as a couple</a>
+              </div>
+              <a class="link-arrow" href="#">How the method works</a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">04 · photo placeholders</span><h2 class="display-s">Photo blocks</h2></div>
+        <div class="cards">
+          <Photo caption="photo: duotone, black on flesh pink" alt="Photo placeholder, flesh" tone="flesh" />
+          <Photo caption="photo: duotone, black on blood" alt="Photo placeholder, blood" tone="blood" />
+          <Photo caption="photo: black and white" alt="Photo placeholder, black" tone="ink" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-ink section" aria-label="Method steps">
+    <div class="container">
+      <div class="sg-head"><span class="label">05 · method steps</span></div>
+      <div class="method-head" style="margin-top: var(--space-5)">
+        <h2 class="display-m">Connecting <em>heart and sex</em></h2>
+        <a class="link-arrow" href="#">How the method works</a>
+      </div>
+      <MethodSteps />
+    </div>
+  </section>
+
+  <section class="on-paper section" aria-label="Offer cards and price table">
+    <div class="container">
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">06 · offer cards</span></div>
+        <div class="cards">
+          <OfferCard href="1-1" tone="blood" caption="one body, slow light" label="1:1 · from 8 hours · from €890" title="1:1" line="Deep, in-person erotic education for you alone, in my space in Lisbon." cta="Explore 1:1" />
+          <OfferCard href="couples" tone="flesh" caption="two hands, close" label="couples · first session €590" title="Couples" line="Learn to reach each other again. In Lisbon, or I come to you." cta="Explore couples work" />
+          <OfferCard href="events/ritual-theatre" tone="ink" caption="performers in low light" label="events · monthly · lisbon" title="Ritual Theatre" line="Erotic ritual art without words. You write the prompts; we play them out." cta="See the next show" />
+        </div>
+      </div>
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">07 · price table</span></div>
+        <PriceTable packages={packages} />
+      </div>
+    </div>
+  </section>
+
+  <section class="on-blood section" aria-label="Booking steps">
+    <div class="container">
+      <div class="sg-head"><span class="label">08 · booking steps</span></div>
+      <BookingSteps />
+      <a class="btn btn--solid" href="#">Start with the intake form</a>
+    </div>
+  </section>
+
+  <section class="on-paper section" aria-label="Section label">
+    <div class="container"><div class="sg-head"><span class="label">09 · quote panel / proof</span></div></div>
+  </section>
+  <Proof />
+
+  <section class="on-ink section" aria-label="Upcoming events">
+    <div class="container">
+      <div class="sg-head"><span class="label">10 · upcoming events (no dates yet)</span></div>
+      <div style="margin-top: var(--space-5)"><EventList /></div>
+    </div>
+  </section>
+
+  <section class="on-blood section" aria-label="Newsletter sign-up">
+    <div class="container">
+      <div class="sg-head"><span class="label">11 · newsletter sign-up</span></div>
+      <div style="margin-top: var(--space-5); max-width: 560px"><Newsletter /></div>
+    </div>
+  </section>
+
+  <section class="on-paper section" aria-label="Intake form fields">
+    <div class="container">
+      <div class="sg-block">
+        <div class="sg-head"><span class="label">12 · intake form fields</span><h2 class="display-s">Form fields</h2></div>
+        <form class="sg-form" onsubmit="return false">
+          <div class="field">
+            <label for="sg-name">Field label</label>
+            <input id="sg-name" type="text" autocomplete="off" />
+            <p class="body-s">Help text in body-s, 15px.</p>
+          </div>
+          <div class="field">
+            <label for="sg-email">Email field</label>
+            <input id="sg-email" type="email" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="sg-select">Choice field</label>
+            <select id="sg-select">
+              <option>Option one</option>
+              <option>Option two</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="label">checkbox</span>
+            <label class="check" for="sg-check"><input id="sg-check" type="checkbox" /><span>Checkbox label</span></label>
+          </div>
+          <div class="field field--wide">
+            <label for="sg-text">Long answer</label>
+            <textarea id="sg-text"></textarea>
+            <p class="body-s">Labels sit above fields in Hanken Grotesk 700. Fields are white, square, 48px tall, with a 2px black border. Focus shows a 3px black outline.</p>
+          </div>
+          <div class="field--wide"><button class="btn btn--solid" type="submit">Submit button</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

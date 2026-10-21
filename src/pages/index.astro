@@ -5,6 +5,7 @@
 // Copy marked as sample comes from brand/reference/homepage.html; swap in approved copy at Stage 3.
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
+import Proof from '../components/Proof.astro';
 import MethodSteps from '../components/MethodSteps.astro';
 import OfferCard from '../components/OfferCard.astro';
 import EventList from '../components/EventList.astro';
@@ -91,18 +92,8 @@ import { url } from '../lib/url';
     </div>
   </section>
 
-  <!-- 5 · Proof. Never client names, stories or photos: credentials, press and approved words only. -->
-  <section class="on-flesh section--quiet" aria-labelledby="proof-title">
-    <div class="container quote">
-      <Photo caption="photo: Marry, mid-laugh, unposed" alt="Photo to come: Marry laughing" tone="ink" class="photo--quote" />
-      <div class="quote__text">
-        <span class="label" data-type>proof</span>
-        <p id="proof-title" class="display-l" data-scrub-words>Nobody <em>performs</em> in my spaces.</p>
-        <p class="body-l" data-reveal>[COPY TO COME]</p>
-        <a class="link-arrow" href={url('about')} data-reveal>Meet Marry</a>
-      </div>
-    </div>
-  </section>
+  <!-- 5 · Proof. Trainings and anonymous quotes live in src/data/proof.ts. -->
+  <Proof />
 
   <!-- 6 · Upcoming events -->
   <section class="on-ink section" aria-labelledby="events-title">

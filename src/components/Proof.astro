@@ -1,0 +1,38 @@
+---
+import Photo from './Photo.astro';
+import { url } from '../lib/url';
+import { trainings, quotes } from '../data/proof';
+---
+
+<section class="on-flesh section--quiet" aria-labelledby="proof-title">
+  <div class="container">
+    <div class="quote">
+      <Photo caption="photo: Marry, mid-laugh, unposed" alt="Photo to come: Marry laughing" tone="ink" class="photo--quote" />
+      <div class="quote__text">
+        <span class="label" data-type>the person in the room</span>
+        <h2 id="proof-title" class="display-l" data-scrub-words>About 2,000 people. <em>Nobody performed.</em></h2>
+        <p class="body-l" data-reveal>
+          I'm Marry, a trained sex therapist and relationship therapist. Across private sessions, retreats and evenings, I've worked with about 2,000 people. I bring a therapist's skill into every session, and I teach so you can take it home.
+        </p>
+        {trainings.length > 0 && (
+          <ul class="label proof__trainings" data-reveal>
+            {trainings.map((t) => <li>{t}</li>)}
+          </ul>
+        )}
+        <a class="link-arrow" href={url('about')} data-reveal>Meet Marry</a>
+      </div>
+    </div>
+    {quotes.length > 0 && (
+      <ul class="proof__quotes" data-stagger>
+        {quotes.map((q) => (
+          <li>
+            <blockquote>
+              <p class="display-s">{q.text}</p>
+            </blockquote>
+            {q.context && <span class="label">{q.context}</span>}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>

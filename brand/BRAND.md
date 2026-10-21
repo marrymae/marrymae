@@ -42,7 +42,7 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 
 - **Menu:** wordmark left; links The method · 1:1 · Couples · Events · Library (Ritual Theatre lives under Events); a solid "Start here" button. 2px line under the menu. On phones: a square black menu button (44px) opening a full-screen black menu.
 - **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`). Quiet links: `.link-arrow`.
-- **Method steps:** black band, 2px bright red line, numbers 01–05 in mono, step names in the display font, one short line each.
+- **Method steps:** black band, 2px bright red line, six steps numbered 01–06 in mono (Slow · Feel · Speak · Meet · Flow · Tend), step names in the display font, one short line each. The second journey, Tend in depth with the ground and the six skills, lives on The method page, not the homepage.
 - **Offer cards:** `.card` with a colour or photo block on top, label, title, one line, arrow link. Whole card is one link.
 - **Price table:** one outlined box, packages side by side, one recommended package filled blood red with white text.
 - **Booking steps:** numbered 01–04 with a 2px line above each: Intake form → Discovery call → Agreement → Sessions.
