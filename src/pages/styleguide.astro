@@ -10,15 +10,30 @@ import BookingSteps from '../components/BookingSteps.astro';
 import Proof from '../components/Proof.astro';
 import EventList from '../components/EventList.astro';
 import Newsletter from '../components/Newsletter.astro';
-import Photo from '../components/Photo.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
 import tokens from '../../brand/tokens.json';
-import { couples, oneToOne, packageLabel, euro, tasterFrom } from '../data/packages';
+import Timeline from '../components/Timeline.astro';
+import Doors from '../components/Doors.astro';
+import Accordion from '../components/Accordion.astro';
+import { couples, oneToOne, euro, tasterFrom, names } from '../data/packages';
 
 const colours = tokens.color.tokens;
 const typeStyles = tokens.type.groups.flatMap((g) => g.styles).filter((t) => t.name !== 'nav' && t.name !== 'button' && t.name !== 'label-s');
 const typeClass: Record<string, string> = { body: '' };
 
-const packages = couples.map((p) => ({ label: packageLabel(p), price: euro(p.price), recommended: p.recommended }));
+const packages = [
+  { label: `${names.sniff} · ${couples.sniff.hours} hours · ${euro(couples.sniff.price)}`, price: euro(couples.sniff.price) },
+  { label: `journey one · ${names.heartAndSex} · ${couples.heartAndSex.hours} hours · ${euro(couples.heartAndSex.price)}`, price: euro(couples.heartAndSex.price) },
+  { label: `recommended · ${names.wholeWay} · ${couples.wholeWay.hours} hours · ${euro(couples.wholeWay.price)}`, price: euro(couples.wholeWay.price), recommended: true },
+];
+const samplePaths: [{ paragraphs: string[] }, { paragraphs: string[] }] = [
+  { paragraphs: ['Both paths hold a little of each other. There\'s ceremony in surrender and something feral in every ritual.'] },
+  { paragraphs: ['Both paths hold a little of each other. There\'s ceremony in surrender and something feral in every ritual.'] },
+];
+const sampleSkills = [
+  { q: 'Energy.', lead: 'Breath and erotic energy.', a: 'Building arousal, moving it through your whole body, riding it and letting it grow instead of racing to the finish.' },
+  { q: 'Pacing.', lead: 'Building and resting, slow and fast, rising and settling.', a: 'Choosing your speed instead of running on one.' },
+];
 const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
 ---
 
@@ -81,11 +96,11 @@ const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
       </div>
 
       <div class="sg-block">
-        <div class="sg-head"><span class="label">04 · photo placeholders</span><h2 class="display-s">Photo blocks</h2></div>
+        <div class="sg-head"><span class="label">04 · photo slots</span><h2 class="display-s">Photo slots (until photos exist)</h2></div>
         <div class="cards">
-          <Photo caption="photo: duotone, black on flesh pink" alt="Photo placeholder, flesh" tone="flesh" />
-          <Photo caption="photo: duotone, black on blood" alt="Photo placeholder, blood" tone="blood" />
-          <Photo caption="photo: black and white" alt="Photo placeholder, black" tone="ink" />
+          <PhotoSlot caption="tone=flesh · duotone, black on flesh pink" alt="Photo slot, duotone black on flesh pink" tone="flesh" class="photo--card" />
+          <PhotoSlot caption="tone=blood · duotone, black on blood red" alt="Photo slot, duotone black on blood red" tone="blood" class="photo--card" />
+          <PhotoSlot caption="tone=ink · black and white" alt="Photo slot, black and white" tone="ink" class="photo--card" />
         </div>
       </div>
     </div>
@@ -107,9 +122,9 @@ const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
       <div class="sg-block">
         <div class="sg-head"><span class="label">06 · offer cards</span></div>
         <div class="cards">
-          <OfferCard href="1-1" tone="blood" caption="one body, slow light" label={`1:1 · taster from ${tasterFrom(oneToOne)}`} title="1:1" line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take." cta="Explore 1:1" />
-          <OfferCard href="couples" tone="flesh" caption="two hands, close" label={`couples · taster from ${tasterFrom(couples)}`} title="Couples" line="Four hours lay the groundwork; up to 16 walk the whole first journey. In Lisbon, or I come to you." cta="Explore couples work" />
-          <OfferCard href="events/ritual-theatre" tone="ink" caption="performers in low light" label="events · monthly · lisbon" title="Ritual Theatre" line="Erotic ritual art without words. You write the prompts; we play them out." cta="See the next show" />
+          <OfferCard href="1-1" tone="blood" caption="photo: one body in slow light, shoulder" alt="One body in slow light seen from the shoulder" label={`1:1 · taster from ${tasterFrom(oneToOne)}`} title="1:1" line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take." cta="Explore 1:1" />
+          <OfferCard href="couples" tone="flesh" caption="photo: two hands meeting on skin" alt="Two hands meeting on skin" label={`couples · taster from ${tasterFrom(couples)}`} title="Couples" line="A little sniff in four hours, the whole first journey in ten. In Lisbon or I come to you." cta="Explore couples work" />
+          <OfferCard href="events/erotic-ritual-art" tone="ink" caption="photo: performers in low light, bodies in motion" alt="Performers moving in low light" label="monthly · lisbon" title="Erotic Ritual Art" line="Performance art, without words. You play the director, we play it out. You just get to watch (and feel things)." cta="About Erotic Ritual Art" />
         </div>
       </div>
       <div class="sg-block">
@@ -143,6 +158,27 @@ const grounds = ['paper', 'blood', 'ink', 'flesh'] as const;
     <div class="container">
       <div class="sg-head"><span class="label">11 · newsletter sign-up</span></div>
       <div style="margin-top: var(--space-5); max-width: 560px"><Newsletter /></div>
+    </div>
+  </section>
+
+  <section class="on-paper section" aria-label="Timeline">
+    <div class="container">
+      <div class="sg-head"><span class="label">13 · timeline</span></div>
+      <Timeline />
+    </div>
+  </section>
+
+  <section class="on-blood section" aria-label="Doors">
+    <div class="container">
+      <div class="sg-head"><span class="label">14 · the deep end doors</span></div>
+      <Doors paths={samplePaths} />
+    </div>
+  </section>
+
+  <section class="on-ink section" aria-label="Accordion">
+    <div class="container">
+      <div class="sg-head"><span class="label">15 · accordion (steps and skills)</span></div>
+      <div style="margin-top: var(--space-5)"><Accordion items={sampleSkills} /></div>
     </div>
   </section>
 

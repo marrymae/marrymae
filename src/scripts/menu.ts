@@ -48,5 +48,5 @@ if (menu && openBtn && closeBtn) {
 
   openBtn.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
-  matchMedia('(min-width: 901px)').addEventListener('change', (e) => { if (e.matches && !menu.hidden) close(); });
+  matchMedia('(min-width: 1081px)').addEventListener('change', (e) => { if (e.matches && !menu.hidden) close(); });
 }

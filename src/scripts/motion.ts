@@ -154,6 +154,19 @@ function lines() {
   });
 }
 
+function timeline() {
+  // The journey line draws in, then the square nodes and stops follow along it.
+  document.querySelectorAll<HTMLElement>('[data-timeline]').forEach((t) => {
+    const vertical = matchMedia('(max-width: 700px)').matches;
+    const line = t.querySelector('[data-timeline-line]');
+    const tl = gsap.timeline({ scrollTrigger: onEnter(t, 'top 80%') });
+    if (line) tl.from(line, { [vertical ? 'scaleY' : 'scaleX']: 0, duration: 1.6, ease: 'expo.inOut' }, 0);
+    tl.from(t.querySelectorAll('.timeline__stop'), { y: 24, autoAlpha: 0, duration: 0.9, ease: 'expo.out', stagger: 0.22 }, 0.3);
+    tl.from(t.querySelectorAll('[data-timeline-node]'), { scale: 0, duration: 0.6, ease: 'back.out(2)', stagger: 0.22 }, 0.4);
+    tl.from(t.querySelectorAll('[data-timeline-bracket]'), { [vertical ? 'scaleY' : 'scaleX']: 0, autoAlpha: 0, duration: 0.9, ease: 'expo.inOut' }, 1.1);
+  });
+}
+
 function scrubWords() {
   // "Nobody performs in my spaces." darkens word by word as it scrolls into view.
   document.querySelectorAll<HTMLElement>('[data-scrub-words]').forEach((el) => {
@@ -202,6 +215,7 @@ async function init() {
   photos();
   lines();
   scrubWords();
+  timeline();
   footer();
   magnetic();
 

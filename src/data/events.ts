@@ -4,7 +4,7 @@ export interface Event {
   date: string; // YYYY-MM-DD
   title: string;
   place: string;
-  href?: string; // page on this site, e.g. 'events/ritual-theatre'
+  href?: string; // page on this site, e.g. 'events/erotic-ritual-art'
 }
 
 export const events: Event[] = [];

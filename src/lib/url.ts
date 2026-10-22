@@ -8,7 +8,7 @@ export const url = (path = '/') => {
 };
 
 export const nav = [
-  { href: 'method', label: 'The method' },
+  { href: 'whats-possible-here', label: "What's possible here" },
   { href: '1-1', label: '1:1' },
   { href: 'couples', label: 'Couples' },
   { href: 'events', label: 'Events' },

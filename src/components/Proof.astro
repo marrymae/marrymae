@@ -1,5 +1,5 @@
 ---
-import Photo from './Photo.astro';
+import PhotoSlot from './PhotoSlot.astro';
 import { url } from '../lib/url';
 import { trainings, quotes } from '../data/proof';
 ---
@@ -7,14 +7,17 @@ import { trainings, quotes } from '../data/proof';
 <section class="on-flesh section--quiet" aria-labelledby="proof-title">
   <div class="container">
     <div class="quote">
-      <Photo caption="photo: Marry, mid-laugh, unposed" alt="Photo to come: Marry laughing" tone="ink" class="photo--quote" />
+      <PhotoSlot caption="photo: Marry, laughing, unposed" alt="Marry laughing mid-sentence in black and white" tone="ink" class="photo--quote" />
       <div class="quote__text">
         <span class="label" data-type>the person in the room</span>
-        <h2 id="proof-title" class="display-l" data-scrub-words>About 2,000 people. <em>Nobody performed.</em></h2>
+        <h2 id="proof-title" class="display-l" data-scrub-words>About 2,000 people. <em>Vulnerability is a turn on.</em></h2>
         <div class="prose" data-stagger>
-          <p>I've been in a lot of rooms. The therapy room, the sex-positive scene, temple spaces. And in my own temple spaces I saw it again and again and again: when people go through the heart first, something unleashes. An erotic current, authentic and a little unruly, that nobody has to force.</p>
-          <p>Over the years, that became what I'm known for. (And loved for, if I'm allowed to say that.)</p>
-          <p>I'm a trained sex therapist and relationship therapist, and I've worked with about 2,000 people. I bring a therapist's skill into the room, and I teach so you can take it home.</p>
+          <p>I've been in a lot of rooms.</p>
+          <p>In the therapy room, I saw how many sex lives go quiet and why. Resentment, fear, the things that never got said.</p>
+          <p>In the sex-positive scene, I saw people go fast, perform and go home with a quick fix but emptier than they arrived.</p>
+          <p>And in my own temple spaces I saw it again and again and again: when people go through the heart first, something real unleashes. An erotic current, alive and authentic, that nobody has to force.</p>
+          <p>Over the years, that became what I'm known for. (And my work appreciated for.)</p>
+          <p>I'm a trained sex therapist and relationship therapist. As a sex educator and erotic ritualist I've worked with about 2,000 people. I bring a therapist's skill into the room but I teach you through the body and the beyond.</p>
         </div>
         {trainings.length > 0 && (
           <ul class="label proof__trainings" data-reveal>

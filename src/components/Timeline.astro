@@ -1,0 +1,31 @@
+---
+// The journey as a timeline: four stops on a 2px line with square nodes.
+// Horizontal on desktop, vertical on phones. The colour deepens along the way: paper → flesh → ink → blood.
+import { names, couples } from '../data/packages';
+
+const c = couples;
+const stops = [
+  { href: '#sniff', name: names.sniff, hours: `${c.sniff.hours}h`, tone: 'paper' },
+  { href: '#connecting-heart-and-sex', name: names.heartAndSex, hours: `${c.heartAndSex.hours}h`, tone: 'flesh' },
+  { href: '#erotic-craft', name: names.craft, hours: `${c.craft.hours}h`, tone: 'ink' },
+  { href: '#deep-end', name: names.deepEnd, hours: `${c.deepEndOnePath.hours} or ${c.deepEndBothPaths.hours}h`, tone: 'blood' },
+];
+---
+
+<div class="timeline" data-timeline role="list">
+  <span class="timeline__line" aria-hidden="true" data-timeline-line></span>
+  {stops.map((stop, i) => (
+    <div class={`timeline__stop timeline__stop--${stop.tone}`} style={`--i: ${i + 1}`} role="listitem">
+      <a href={stop.href} class="timeline__link">
+        <span class="timeline__node" aria-hidden="true" data-timeline-node></span>
+        <span class="label timeline__hours">{stop.hours}</span>
+        <span class="timeline__name">{stop.name}</span>
+      </a>
+      {i === 0 && <span class="label timeline__note">credited if you continue</span>}
+    </div>
+  ))}
+  <div class="timeline__bracket" aria-hidden="true" data-timeline-bracket>
+    <span class="label">{names.wholeWay} · {c.wholeWay.hours}h</span>
+  </div>
+  <p class="visually-hidden">{names.heartAndSex} and {names.craft} together are {names.wholeWay}: {c.wholeWay.hours} hours.</p>
+</div>

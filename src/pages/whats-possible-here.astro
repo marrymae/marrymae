@@ -1,0 +1,227 @@
+---
+// LEGAL REVIEW: hands-on offer page. Final wording is checked by a lawyer before launch.
+// Copy: content/website-copy.md, "What's possible here", word for word. Prices come from src/data/packages.ts.
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import Timeline from '../components/Timeline.astro';
+import Accordion from '../components/Accordion.astro';
+import Doors from '../components/Doors.astro';
+import BookingSteps from '../components/BookingSteps.astro';
+import { url } from '../lib/url';
+import { couples as c, oneToOne as o, euro, names, tasterCreditDays } from '../data/packages';
+
+const steps = [
+  {
+    num: '01', q: 'Slow.', lead: "We slow way down. Slower than feels comfortable (that's kind of the point).",
+    a: 'You maybe hear "slow" and think boring. Hear me out. Most of us go fast because fast keeps our feelings at a safe distance. And most of us were never taught how to slow down. Arousal is a strong force and nobody showed us how to stay with it instead of rushing to chase the high. So we breathe together. We look at each other for longer than most people do. We touch at a fraction of the usual speed. Your body settles and a settled body can actually receive. Slow builds anticipation. And anticipation is delicious. It doesn\'t always stay slow, by the way. From here, a lot of passion can be unleashed if that feels true.',
+  },
+  {
+    num: '02', q: 'Feel.', lead: "You notice what's actually there.",
+    a: "The nerves. The longing. The tenderness you've been skipping. The flicker of arousal, the tension in your jaw, maybe a little numbness. All of it is welcome here. You don't have to do anything with it yet. Just feel it. You'll start to recognise your body's yes, its no and its maybe. Your body has opinions and we listen. And if you're here with a partner, you start feeling them too. Their breath. Their tension. The exact moment they soften.",
+  },
+  {
+    num: '03', q: 'Speak.', lead: 'You name it.',
+    a: 'Sometimes that\'s a pattern: "When you do this, I feel this." Sometimes it\'s the hot stuff: what turns you on, what you\'ve never dared to ask for. And sometimes it\'s one word in the moment. "Slower." "Yes." "There." Unspoken stuff makes a room heavy and/or it keeps us questioning. Once it\'s named, you can actually reach each other. Listening is half of it. We’re not afraid of the usually unspoken stuff. If it turns into frustration or a fight? Great, honestly. We work with that too. Usually it shows us exactly why things haven\'t been sexy lately.',
+  },
+  {
+    num: '04', q: 'Meet.', lead: 'You get seen, exactly as you are.',
+    a: 'And you stay. (Harder than it sounds. Delicious too.) Sometimes we find our way back to each other quietly. Sometimes it gets more active. Permission to be soft. Permission to be ferocious. And everything in between and beyond.',
+  },
+  {
+    num: '05', q: 'Flow.', lead: 'And then the erotic current usually unleashes on its own.',
+    a: "Nobody has to force it. Nobody has to perform it. It arrives as a natural consequence of the heart-y state we put you in. It moves through your belly, your pelvis, your skin, in places you forgot could feel anything. We start soft. What happens after that? Well… we'll know when we're in the room together, because every imprint is unique and so is every erotic unfolding. (Some things are better felt than read. And to keep things clear, there are strong agreements in place.) The part almost nobody has practised: actually staying while it gets hot. Most of us leave right when it gets good. Eyes close, the head takes over, fantasy, performance. Here you learn to stay. Right here.",
+  },
+  {
+    num: '06', q: 'Tend.', lead: "Practise it until it's yours.",
+    a: "Tending starts right here in the room. In every session we come back to what came alive, practise it together and let it settle in your body, so it's already becoming yours before you leave. Then it goes home with you: alone or together, for years. Every session ends with something to take home and trust me, it's the kind of practice you'll actually want to do.",
+  },
+];
+
+const skills = [
+  { q: 'Energy.', lead: 'Breath and erotic energy.', a: 'Building arousal, moving it through your whole body, riding it and letting it grow instead of racing to the finish.' },
+  { q: 'Touch.', lead: 'Touch that listens as much as it gives.', a: 'Asking for exactly what you want and receiving it fully (harder than it sounds for most of us). Sensual and erotic massage, taught properly.' },
+  { q: 'Range.', lead: 'Soft and wild, tender and bold, power and surrender, edge and intensity.', a: 'So many more ways to be erotic than the script most of us were handed.' },
+  { q: 'Play.', lead: 'Curiosity, imagination and a sense of humour.', a: 'Permission to experiment, get it a bit wrong and laugh about it.' },
+  { q: 'Pacing.', lead: 'Building and resting, slow and fast, rising and settling.', a: 'Choosing your speed instead of running on one.' },
+  { q: 'Practice.', lead: 'Making it part of your actual life.', a: 'How often, alone and together, small rituals and how intimacy changes with the seasons of a relationship.' },
+];
+
+const paths: [{ paragraphs: string[] }, { paragraphs: string[] }] = [
+  {
+    paragraphs: [
+      "Power and the animal body underneath your manners. Dominance and surrender, giving and taking control, commands, service, switching sides. Sensation and impact, built slowly until you can read a body as it opens. Being held still and holding someone still (hands, weight and intention). Primal play: growling, wrestling, chasing, a little biting. Edging, waiting, release on command. And the shadow: the fantasies and roles you've been a bit ashamed of wanting, brought into the light and played with properly.",
+      'You learn to negotiate, lead, receive and close a scene, with the heart from the first journey still beating underneath it all. Feral and fully held.',
+    ],
+  },
+  {
+    paragraphs: [
+      "The erotic, made sacred. I set the room like a temple: an altar, the elements, an intention spoken out loud. Then breath, sound, rhythm and long, slow arousal, until the mind lets go and trance takes over. Sex magic. Archetypes (the priestess, the beast, the lover, the god). Anointing and ceremonial touch. Rituals for the thresholds of a life: a new relationship, opening up, coming back to your body, a new chapter, ending well. And vows, if you're ready to make some.",
+      "I hold the ceremony and lead you in. Then you learn to guide it yourselves, so your sex life keeps a little ritual long after we're done.",
+    ],
+  },
+];
+
+const beginSteps = [
+  { name: 'Intake form', line: 'A few questions: who you are, your experience so far, what you want.' },
+  { name: 'Discovery call', line: '€50, credited in full if you book. 30 minutes for 1:1, 45 for couples. See if we’re aligned and I can offer what you’re looking for. Bring the questions.' },
+  { name: 'Agreement and payment', line: 'Everything in writing, payment plans with no surcharge.' },
+  { name: 'Questionnaires', line: 'They shape your sessions. (Couples get three: one each, one together.)' },
+  { name: 'Sessions', line: 'In my space in Lisbon. For the first two journeys, couples can also have me come to them, at the same price.' },
+];
+---
+
+<Layout
+  title="What's possible here · Marry Mae · Erotic education journeys in Lisbon"
+  description="Three journeys in erotic education, walked in order: Connecting heart and sex, Erotic craft and The deep end. In person in Lisbon, for singles and couples. Start with a 4-hour taster."
+  ground="blood"
+  current="whats-possible-here"
+  legalReview
+>
+  <!-- 1 · Hero -->
+  <PageHero
+    slot="hero"
+    label="the journeys · 1:1 and couples · lisbon"
+    headline="What's possible <em>here.</em>"
+    intro="Through the heart, into the sex and all the way into the deep end. Three journeys, walked in order, at the pace your body can actually take and depending on where you’re already at."
+  >
+    <div class="btn-pair" data-reveal>
+      <a class="btn btn--solid" href={url('start')} data-magnetic>Start with the intake form →</a>
+      <a class="btn btn--outline" href="#journeys" data-magnetic>See the journeys ↓</a>
+    </div>
+  </PageHero>
+
+  <!-- The journey as a timeline -->
+  <section class="on-paper section timeline-section" id="journeys" aria-label="The journeys">
+    <div class="container">
+      <Timeline />
+    </div>
+  </section>
+
+  <!-- 2 · The stance -->
+  <section class="on-paper section--quiet" aria-labelledby="stance-title">
+    <div class="container split split--sticky">
+      <h2 id="stance-title" class="display-m" data-split>There are no shortcuts in the world of <em>authentic eroticism.</em></h2>
+      <div class="prose" data-stagger>
+        <p>Everywhere you look, someone is selling a quick fix these days. Three tricks for better sex. One weekend to a whole new you. More intensity, faster, louder, again.</p>
+        <p>I don't do quick fixes. That’s simply not how bodies and our pleasure system works.</p>
+        <p>Real erotic depth takes time, practice and a bit of courage. It gets built the way anything real gets built: brick by brick.</p>
+        <p>So here, everyone walks the whole way. Brand new to this? We take our time. Already seasoned? You'll move through the groundwork faster and you'll still walk it, because the ground is what holds you once things get intense. Nobody starts in the deep end.</p>
+        <p>If that sounds like a lot, you're reading it right. If it sounds like a relief, this is exactly for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · How I work -->
+  <section class="on-ink section--quiet" aria-labelledby="work-title">
+    <div class="container quote quote--flip">
+      <div class="quote__text">
+        <h2 id="work-title" class="display-m" data-split>There's a method. <em>There's also you.</em></h2>
+        <div class="prose" data-stagger>
+          <p>The method I teach is called Connecting Heart and Sex. Six steps, held by four things that run underneath everything: presence, permission, consent and truth.</p>
+          <p>Six steps. Sounds simple. (It is, the way deep water is simple.) It asks for courage and it gives a lot back.</p>
+          <p>The steps are a framework. Inside it, I meet you exactly as you are: your body, your history, your very particular imprint. No two people walk it the same way, so no two journeys look alike.</p>
+          <p>Every session has the same shape. We open: you arrive, drop into your body and we make our agreements about what's part of today. We move, at your pace. And we close properly, so whatever happened can land and come home with you.</p>
+        </div>
+      </div>
+      <PhotoSlot caption="photo: Marry teaching, explaining with their hands" alt="Marry explaining something with their hands in black and white" tone="ink" class="photo--quote" />
+    </div>
+  </section>
+
+  <!-- 4 · The front door -->
+  <section class="on-flesh section--quiet" id="sniff" aria-labelledby="sniff-title">
+    <div class="container split">
+      <div class="stack">
+        <span class="label" data-type>{names.sniff} · {c.sniff.hours} hours</span>
+        <h2 id="sniff-title" class="display-m" data-split>Dip <em>a toe in.</em></h2>
+      </div>
+      <div class="prose" data-stagger>
+        <p>Four hours is a real first step and a real investment. It's enough time to feel what this work is, how I hold it and whether it's yours, so you know exactly what you're getting into. (Fair warning: four hours is a beginning. The deeper work lives beyond it.)</p>
+        <p>You'll slow down (properly), be met in presence, feel how differently touch lands when nobody's rushing and go home with one practice that came out of your own session.</p>
+        <p class="price-line">couples {euro(c.sniff.price)} · 1:1 {euro(o.sniff.price)} · two instalments if you like</p>
+        <p class="body-s">Continue within {tasterCreditDays} days and every minute counts towards {names.heartAndSex} or {names.wholeWay}.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Journey one -->
+  <section class="on-paper section--quiet" id="connecting-heart-and-sex" aria-labelledby="one-title">
+    <div class="container">
+      <div class="split">
+        <div class="stack">
+          <span class="label" data-type>journey one · {c.heartAndSex.hours} hours</span>
+          <h2 id="one-title" class="display-m" data-split>Connecting heart <em>and sex.</em></h2>
+        </div>
+        <p class="body-l lead-text" data-reveal>All six steps, Tend included, usually over two long days of five hours each. This is where things actually change.</p>
+      </div>
+      <Accordion items={steps} />
+      <div class="prose prose--wide after-acc" data-stagger>
+        <p>We move through the steps in order. Then they blur, because that's how bodies work and that's when you know they're becoming yours. When something gets hard or too fast, we go back to Slow. Every time.</p>
+        <p>Just you? Every step works for one. I'm your witness and your guide and I work with you hands-on. Your own body is the other half of the conversation. (And you get to take all of it into every encounter that comes after. Lucky them.)</p>
+        <p>What you leave with: a language for what you want and what's in the way, a way to yourself or to each other, the felt experience of staying present while the current builds and a practice that's yours.</p>
+        <p class="price-line">couples {euro(c.heartAndSex.price)} · 1:1 {euro(o.heartAndSex.price)} · three instalments if you like</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Journey two -->
+  <section class="on-ink section--quiet" id="erotic-craft" aria-labelledby="two-title">
+    <div class="container">
+      <div class="split">
+        <div class="stack">
+          <span class="label hero__label" data-type>journey two · {c.craft.hours} more hours</span>
+          <h2 id="two-title" class="display-m" data-split>Erotic <em>craft.</em></h2>
+        </div>
+        <div class="prose" data-stagger>
+          <p>So your heart and sex are connected. Now what?</p>
+          <p>Once Connecting heart and sex has done its work to build a groundwork, we go deeper into the tending.</p>
+          <p>Erotic craft is where the skills live. I teach them, show them and put them in your hands and you practise until your lungs, your skin, your heart and your nervous system know things your head used to only guess at. The experience grows out of the practice. (Craft takes repetition. Lucky you.) Twenty more hours after Connecting heart and sex: four long days, six skills.</p>
+        </div>
+      </div>
+      <Accordion items={skills} />
+      <div class="prose prose--wide after-acc" data-stagger>
+        <p class="price-line">Erotic craft comes together with Connecting heart and sex as The whole way: {c.wholeWay.hours} hours · couples {euro(c.wholeWay.price)} · 1:1 {euro(o.wholeWay.price)} · up to six instalments if you like</p>
+        <p class="body-s">Already walked Connecting heart and sex? Continue with Erotic craft on its own: {c.craft.hours} hours · couples {euro(c.craft.price)} · 1:1 {euro(o.craft.price)}.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · The deep end -->
+  <section class="on-blood section--quiet" id="deep-end" aria-labelledby="deep-title">
+    <div class="container">
+      <div class="split">
+        <div class="stack">
+          <span class="label" data-type>the deep end · {c.deepEndOnePath.hours} or {c.deepEndBothPaths.hours} hours · in my space</span>
+          <h2 id="deep-title" class="display-m" data-split>And then there's <em>the deep end.</em></h2>
+        </div>
+        <div class="prose" data-stagger>
+          <p>For those who've walked Connecting heart and sex and Erotic craft. You can swim now. So we go where the water gets dark.</p>
+          <p>In Erotic craft, I hand you skills. Here, I take you somewhere. This is where you and I play (for the sake of education). I'm in it with you: I hold the space, I lead and I teach with my own body as well as my words. Mutual touch can be part of it, always negotiated in detail and agreed in writing before we begin. You feel it first, from the inside. Then I hand it over, so it stays with you long after you've left the room.</p>
+          <p>Two paths. Walk one in {c.deepEndOnePath.hours} hours or both in {c.deepEndBothPaths.hours}.</p>
+        </div>
+      </div>
+      <Doors paths={paths} />
+      <div class="prose prose--wide after-acc" data-stagger>
+        <p>Both paths hold a little of each other. There's ceremony in surrender and something feral in every ritual.</p>
+        <p class="price-line">one path, {c.deepEndOnePath.hours} hours · couples {euro(c.deepEndOnePath.price)} · 1:1 {euro(o.deepEndOnePath.price)} · three instalments if you like</p>
+        <p class="price-line">both paths, {c.deepEndBothPaths.hours} hours · couples {euro(c.deepEndBothPaths.price)} · 1:1 {euro(o.deepEndBothPaths.price)} · up to six instalments if you like</p>
+        <p class="body-s">In my space in Lisbon only.</p>
+        <p class="body-s">How you get here: by walking the whole way. Strong agreements are in place, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · How to begin -->
+  <section class="on-paper section--quiet" aria-labelledby="begin-title">
+    <div class="container">
+      <h2 id="begin-title" class="display-m" data-split>Start at <em>the beginning.</em></h2>
+      <p class="body-l lead-text" data-reveal>Every journey starts the same way.</p>
+      <BookingSteps steps={beginSteps} />
+      <div class="begin-actions" data-reveal>
+        <a class="btn btn--solid" href={url('start')} data-magnetic>Start with the intake form →</a>
+        <a class="link-arrow" href={url('couples')}>Couples</a>
+        <a class="link-arrow" href={url('1-1')}>1:1</a>
+      </div>
+    </div>
+  </section>
+</Layout>

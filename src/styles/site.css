@@ -75,7 +75,7 @@ html { scroll-behavior: smooth; }
 }
 .on-ink .menu-toggle { border-color: var(--paper); }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .nav__links { display: none; }
   .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
 }
@@ -135,18 +135,32 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .on-ink .hero__intro { color: var(--paper-soft); }
 .hero--home { min-height: min(86vh, 900px); }
 
-/* ---------- Photo placeholders ---------- */
+/* ---------- Photo slots ----------
+   A photo becomes brand duotone: greyscale, then multiplied onto the tone colour,
+   so white turns blood or flesh and black stays black. "ink" stays black and white. */
 .photo {
-  position: relative; overflow: hidden;
+  position: relative; overflow: hidden; margin: 0;
   min-height: 380px; display: flex; align-items: flex-end; justify-content: center; padding: var(--space-5);
   font-family: var(--font-mono); font-size: 0.8125rem; text-align: center;
 }
 .photo--flesh { background: var(--flesh); color: var(--ink); }
 .photo--blood { background: var(--blood); color: var(--paper); }
 .photo--ink { background: var(--ink); color: var(--flesh); }
-.photo--hero { min-height: 520px; }
-.photo--quote { min-height: 380px; }
+.photo--filled { padding: 0; }
+.photo--filled img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15); }
+.photo--flesh.photo--filled img, .photo--blood.photo--filled img { mix-blend-mode: multiply; }
+.photo--ink.photo--filled { background: var(--paper); }
+.photo--hero { min-height: 560px; }
+.photo--quote { min-height: 520px; }
+.photo--card { min-height: 0; aspect-ratio: 4 / 5; }
+.photo--band { min-height: 0; aspect-ratio: 21 / 9; }
+.photo--wide { min-height: 0; aspect-ratio: 16 / 9; }
 .photo__caption { display: block; }
+/* A black-and-white slot on a black section shows dark grey until its photo arrives. */
+.on-ink .photo--ink:not(.photo--filled) { background: var(--ink-soft); }
+
+/* Full-width image band */
+.band { background: var(--paper); }
 
 /* ---------- Method steps ---------- */
 .method-head, .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-5); margin-bottom: var(--space-6); }
@@ -173,15 +187,15 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 /* Hover uses `translate`, leaving `transform` free for the scroll animation. */
 .offer { transition: translate 0.5s var(--ease-out); }
 .offer__media { position: relative; overflow: hidden; }
-.offer__media > span { position: relative; z-index: 1; transition: transform 0.6s var(--ease-out); }
+.offer__media .photo { transition: scale 0.8s var(--ease-out); }
 .offer__media::before {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--border-strong);
   background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease-out);
 }
-.offer__media.photo--ink::before { background: var(--blood-bright); }
+.offer__media::before { z-index: 1; }
 .offer:hover { translate: 0 -6px; }
 .offer:hover .offer__media::before { transform: scaleX(1); }
-.offer:hover .offer__media > span { transform: translateY(-4px); }
+.offer:hover .offer__media .photo { scale: 1.03; }
 .offer__title { transition: color 0.4s var(--ease-out); }
 .offer:hover .offer__title { font-style: italic; color: var(--blood-text); }
 
@@ -335,6 +349,90 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .acc__item::details-content { block-size: 0; overflow: clip; transition: block-size 0.5s var(--ease-out), content-visibility 0.5s allow-discrete; }
 .acc__item[open]::details-content { block-size: auto; }
 
+/* ---------- More air between sections ---------- */
+.section { padding: var(--space-9) 0; }
+.section--quiet { padding: calc(var(--space-9) + var(--space-8)) 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- Layout helpers ---------- */
+.split--sticky > :first-child { position: sticky; top: var(--space-7); align-self: start; }
+.quote--flip { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+.prose--wide { max-width: 760px; }
+.after-acc { margin-top: var(--space-7); }
+.lead-text { margin: 0; }
+.price-line { font-weight: 700; font-size: 1.125rem; border-top: var(--border-strong) solid currentColor; padding-top: var(--space-4); }
+.begin-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
+.upcoming { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); align-items: end; }
+.photo--page { min-height: 520px; }
+
+/* ---------- Timeline: the journey ----------
+   Four stops on a 2px line with square nodes. The tiles deepen paper → flesh → ink → blood. */
+.timeline-section { padding-bottom: var(--space-8); }
+.timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: var(--space-8); }
+.timeline__line { position: absolute; left: 0; right: 0; top: calc(var(--space-8) - 31px); height: var(--border-strong); background: var(--ink); transform-origin: left; }
+.timeline__stop { position: relative; grid-row: 1; }
+.timeline__link {
+  display: flex; flex-direction: column; gap: var(--space-3); height: 100%; min-height: 200px;
+  padding: var(--space-5); text-decoration: none; border: var(--border-strong) solid var(--ink);
+  transition: padding 0.5s var(--ease-out);
+}
+.timeline__stop + .timeline__stop .timeline__link { border-left: 0; }
+.timeline__node {
+  position: absolute; left: 0; top: -40px; width: 20px; height: 20px;
+  border: var(--border-strong) solid var(--ink); background: var(--paper); transition: scale 0.4s var(--ease-out);
+}
+.timeline__stop--flesh .timeline__node { background: var(--flesh); }
+.timeline__stop--ink .timeline__node { background: var(--ink); }
+.timeline__stop--blood .timeline__node { background: var(--blood); }
+.timeline__stop--paper .timeline__link { background: var(--paper); color: var(--ink); }
+.timeline__stop--flesh .timeline__link { background: var(--flesh); color: var(--ink); }
+.timeline__stop--ink .timeline__link { background: var(--ink); color: var(--paper); }
+.timeline__stop--blood .timeline__link { background: var(--blood); color: var(--paper); }
+.timeline__name { font-family: var(--font-display); font-size: var(--size-display-s); line-height: 1.1; margin-top: auto; }
+.timeline__stop--blood .timeline__name { color: var(--ink); }
+.timeline__link:hover { opacity: 1; padding-bottom: var(--space-6); }
+.timeline__link:hover .timeline__name { font-style: italic; }
+.timeline__link:hover .timeline__node { scale: 1.3; }
+.timeline__note { position: absolute; top: -72px; left: 50%; translate: -50% 0; white-space: nowrap; color: var(--ink-soft); }
+.timeline__bracket {
+  grid-row: 2; grid-column: 2 / 4; position: relative; height: var(--space-4);
+  border: var(--border-strong) solid var(--ink); border-top: 0; margin: var(--space-4) 0 var(--space-7);
+}
+.timeline__bracket .label { position: absolute; top: 100%; left: 50%; translate: -50% 0; padding-top: var(--space-2); white-space: nowrap; }
+
+/* ---------- The deep end: two doors ---------- */
+.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-8); }
+.door {
+  border: var(--border-strong) solid var(--ink); padding: var(--space-9) var(--space-6) var(--space-6);
+  display: flex; flex-direction: column; gap: var(--space-4);
+  transition: background-color 0.6s var(--ease-out), color 0.6s var(--ease-out);
+}
+.door p { margin: 0; }
+.door__name { margin: 0 0 var(--space-2); transition: color 0.6s var(--ease-out); }
+.on-blood .door:hover { background: var(--ink); color: var(--paper); }
+.on-blood .door:hover .door__name { color: var(--paper); font-style: italic; }
+.on-ink .door { border-color: var(--blood-bright); }
+.on-ink .door__num { color: var(--blood-bright); }
+.on-ink .door:hover { background: var(--blood); }
+.on-ink .door:hover .door__num { color: var(--paper); }
+.on-ink .door:hover .door__name { color: var(--ink); font-style: italic; }
+
+/* ---------- Accordion: steps and skills ---------- */
+.acc--steps .acc__q { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-5); }
+.acc__head { display: flex; flex-direction: column; gap: var(--space-2); }
+.acc--steps .acc__num { grid-column: 1; }
+.acc--steps .acc__head { grid-column: 2; }
+.acc--steps .acc__state { grid-column: 3; }
+.acc__lead { font-size: 1.125rem; font-weight: 500; }
+.acc__num { color: var(--blood-text); }
+.acc--steps .acc__a { padding-left: calc(2ch + var(--space-5) + 6px); }
+.on-ink .acc { border-top-color: var(--blood-bright); }
+.on-ink .acc__item { border-bottom-color: var(--ink-soft); }
+.on-ink .acc__num { color: var(--blood-bright); }
+.on-ink .acc__q:hover .acc__text, .on-ink .acc__item[open] .acc__text { color: var(--blood-bright); }
+.on-ink .acc__a p { color: var(--paper-soft); }
+.on-ink .acc__q:focus-visible { outline-color: var(--paper); }
+
 /* ---------- Placeholder copy ---------- */
 .copy-to-come { margin: 0 0 var(--space-5); }
 
@@ -358,6 +456,9 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .hero, .split, .quote, .journey { grid-template-columns: 1fr; }
   .hero--home { min-height: 0; }
   .photo, .photo--hero { min-height: 300px; }
+  .photo--hero { min-height: 0; aspect-ratio: 4 / 5; }
+  .photo--card { min-height: 0; }
+  .photo--band, .photo--wide { min-height: 0; aspect-ratio: 4 / 3; }
   .steps { grid-template-columns: 1fr; gap: var(--space-6); }
   .cards { grid-template-columns: 1fr; }
   .prices { grid-template-columns: 1fr; }
@@ -367,6 +468,22 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .footer-links a { margin-left: 0; margin-right: var(--space-5); }
   .split--even { grid-template-columns: 1fr; }
   .columns { grid-template-columns: 1fr; gap: var(--space-6); }
+  .hero--home .photo--hero { order: -1; }
+  .split--sticky > :first-child { position: static; }
+  .quote--flip, .upcoming, .doors { grid-template-columns: 1fr; }
+  .photo--page { min-height: 300px; }
+  .door { padding-top: var(--space-8); }
+  .acc--steps .acc__a { padding-left: 0; }
+  /* Timeline runs top to bottom on phones */
+  .timeline { grid-template-columns: minmax(0, 1fr) var(--space-7); padding-top: 0; padding-left: var(--space-7); }
+  .timeline__line { left: 9px; right: auto; top: 0; bottom: 0; width: var(--border-strong); height: auto; transform-origin: top; }
+  .timeline__stop { grid-row: var(--i); grid-column: 1; }
+  .timeline__link { min-height: 0; height: auto; border-left: var(--border-strong) solid var(--ink); }
+  .timeline__stop + .timeline__stop .timeline__link { border: var(--border-strong) solid var(--ink); margin-top: calc(-1 * var(--border-strong)); }
+  .timeline__node { left: calc(-1 * var(--space-7)); top: var(--space-5); }
+  .timeline__note { position: static; translate: none; display: block; padding: var(--space-2) 0 var(--space-2) var(--space-2); }
+  .timeline__bracket { grid-row: 2 / 4; grid-column: 2; height: auto; margin: 0 0 0 var(--space-3); width: var(--space-4); border: var(--border-strong) solid var(--ink); border-left: 0; }
+  .timeline__bracket .label { top: 50%; left: 100%; translate: 0 -50%; padding: 0 0 0 var(--space-2); writing-mode: vertical-rl; }
   .touch-box { padding: var(--space-5); }
   .sg-type > div, .sg-grounds, .sg-form { grid-template-columns: 1fr; }
   .event { grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-4); }

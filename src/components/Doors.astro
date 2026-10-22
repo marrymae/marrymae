@@ -1,0 +1,23 @@
+---
+// The deep end's two paths as two "doors": side by side on desktop, stacked on phones.
+import { names } from '../data/packages';
+
+interface Path {
+  /** Paragraphs for this path, word for word from the copy. */
+  paragraphs: string[];
+}
+interface Props {
+  paths: [Path, Path];
+}
+const { paths } = Astro.props;
+---
+
+<div class="doors" data-stagger>
+  {paths.map((path, i) => (
+    <article class="door">
+      <span class="label door__num">path {String(i + 1).padStart(2, '0')}</span>
+      <h3 class="display-m door__name">{names.paths[i]}</h3>
+      {path.paragraphs.map((text) => <p>{text}</p>)}
+    </article>
+  ))}
+</div>

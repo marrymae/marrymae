@@ -6,8 +6,13 @@ import CopyToCome from '../../components/CopyToCome.astro';
 import { url } from '../../lib/url';
 ---
 
-<Layout title="Ritual Theatre" ground="ink" current="events" legalReview>
-  <PageHero slot="hero" label="events · ritual theatre · monthly · lisbon" headline="Ritual <em>Theatre</em>" intro="Erotic ritual art without words. You write the prompts; we play them out.">
+<Layout title="Erotic Ritual Art" ground="ink" current="events" legalReview>
+  <PageHero
+    slot="hero"
+    label="events · monthly · lisbon"
+    headline="Erotic Ritual <em>Art</em>"
+    photo={{ caption: 'photo: performers in low light, bodies in motion', alt: 'Performers moving in low light in black and white', tone: 'ink', eager: true }}
+  >
     <a class="link-arrow" href={url('events')} data-reveal>Upcoming events</a>
   </PageHero>
   <CopyToCome />

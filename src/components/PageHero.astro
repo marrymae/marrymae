@@ -1,12 +1,12 @@
 ---
-import Photo from './Photo.astro';
+import PhotoSlot from './PhotoSlot.astro';
 
 interface Props {
   label?: string;
   /** Headline HTML with one <em> for the italic moment. */
   headline: string;
   intro?: string;
-  photo?: { caption: string; alt: string; tone?: 'flesh' | 'blood' | 'ink' };
+  photo?: { caption: string; alt: string; tone?: 'flesh' | 'blood' | 'ink'; src?: string };
 }
 const { label, headline, intro, photo } = Astro.props;
 ---
@@ -18,5 +18,5 @@ const { label, headline, intro, photo } = Astro.props;
     {intro && <p class="body-l hero__intro" data-reveal>{intro}</p>}
     <slot />
   </div>
-  {photo && <Photo {...photo} />}
+  {photo && <PhotoSlot {...photo} eager class="photo--page" />}
 </div>

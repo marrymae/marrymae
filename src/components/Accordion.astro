@@ -1,21 +1,29 @@
 ---
-// Questions and answers that open one at a time on click. Uses the browser's own <details>,
-// so it works with the keyboard and without JavaScript. No icons: an open question turns italic.
+// Items that open one at a time on tap. Uses the browser's own <details>,
+// so it works with the keyboard and without JavaScript. No icons: an open item turns italic.
+// Questions: { q, a }. Steps and skills: { num?, q (name), lead (first line, always shown), a (the rest) }.
 interface Item {
   q: string;
   a: string;
+  num?: string;
+  lead?: string;
 }
 interface Props {
   items: Item[];
 }
 const { items } = Astro.props;
+const stepped = items.some((item) => item.lead);
 ---
 
-<div class="acc" data-stagger>
+<div class:list={['acc', { 'acc--steps': stepped }]} data-stagger>
   {items.map((item) => (
     <details class="acc__item">
       <summary class="acc__q">
-        <span class="acc__text">{item.q}</span>
+        {item.num && <span class="label acc__num">{item.num}</span>}
+        <span class="acc__head">
+          <span class="acc__text">{item.q}</span>
+          {item.lead && <span class="acc__lead">{item.lead}</span>}
+        </span>
         <span class="label acc__state" aria-hidden="true"><span class="acc__open">open</span><span class="acc__close">close</span></span>
       </summary>
       <div class="acc__a">

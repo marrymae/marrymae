@@ -1,0 +1,34 @@
+---
+// One photo slot for the whole site. Give it a photo later (put the file in public/photos/ and pass src="photos/name.jpg")
+// and CSS turns it into the brand look:
+//   tone="blood" → duotone, black on blood red
+//   tone="flesh" → duotone, black on flesh pink
+//   tone="ink"   → black and white
+// Until a photo exists, the slot shows a solid block in that tone with a short mono caption describing the shot.
+// Shoot list and style: brand/BRAND.md, "Images".
+import { url } from '../lib/url';
+
+interface Props {
+  /** Describes the photo for screen readers. Required for every slot. */
+  alt: string;
+  /** Short mono caption shown until the photo exists, e.g. "photo: two hands meeting on skin". */
+  caption: string;
+  tone?: 'flesh' | 'blood' | 'ink';
+  /** Path inside public/, e.g. "photos/hero.jpg". */
+  src?: string;
+  /** Above the fold: load straight away. Everything else lazy-loads. */
+  eager?: boolean;
+  class?: string;
+}
+const { alt, caption, tone = 'flesh', src, eager = false, class: className = '' } = Astro.props;
+---
+
+{src ? (
+  <figure class={`photo photo--${tone} photo--filled ${className}`} data-wipe>
+    <img src={url(src)} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : undefined} />
+  </figure>
+) : (
+  <div class={`photo photo--${tone} ${className}`} role="img" aria-label={alt} data-wipe>
+    <span class="photo__caption" data-parallax aria-hidden="true">{caption}</span>
+  </div>
+)}

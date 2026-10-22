@@ -1,8 +1,8 @@
 ---
-// The homepage, top to bottom: hero · the idea · the method · ways in · proof · upcoming · the letter · speaking.
-// Approved copy; change wording only when Marry brings new copy.
+// Copy: content/website-copy.md, "Homepage", word for word.
+// Top to bottom: hero · the idea · image band · the method · ways in · proof · upcoming · the letter · speaking.
 import Layout from '../layouts/Layout.astro';
-import Photo from '../components/Photo.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
 import Proof from '../components/Proof.astro';
 import MethodSteps from '../components/MethodSteps.astro';
 import OfferCard from '../components/OfferCard.astro';
@@ -14,7 +14,7 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
 
 <Layout
   title="Marry Mae · Erotic education for singles and couples in Lisbon"
-  description="In-person erotic education in Lisbon. Marry guides singles and couples to connect heart and sex, slow enough to stay in your body and indefinitely hot."
+  description="In-person erotic education in Lisbon. Marry guides singles and couples to connect heart and sex, slow enough to stay in your body, real enough to be seen and a little unruly."
   ground="blood"
 >
   <!-- 1 · Hero -->
@@ -23,31 +23,43 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
       <span class="label hero__label" data-type>singles · couples · lisbon</span>
       <h1 class="display-xl" data-split>Eroticism that lasts, <em>because it's real.</em></h1>
       <p class="body-l hero__intro" data-reveal>
-        I'm Marry. I guide singles and couples to connect heart and sex, in person and in the body. Slow enough to stay in your body, real enough to be seen, and indefinitely hot.
+        I'm Marry. I want you to know your bed has a door you've never opened. I guide singles and couples into the erotic world that's been hiding inside the life they already have. Slow enough to stay in your body, real enough to be seen and a little unruly.
       </p>
       <div class="btn-pair" data-reveal>
         <a class="btn btn--solid" href={url('1-1')} data-magnetic>Come alone</a>
         <a class="btn btn--outline" href={url('couples')} data-magnetic>Come together</a>
-        <a class="btn btn--outline" href={url('events/ritual-theatre')} data-magnetic>Come watch</a>
+        <a class="btn btn--outline" href={url('events/erotic-ritual-art')} data-magnetic>Come watch</a>
       </div>
     </div>
-    <Photo caption="photo: duotone, black on flesh pink, two bodies close" alt="Photo to come: two bodies close, duotone" tone="flesh" class="photo--hero" />
+    <PhotoSlot caption="photo: two hands meeting on skin · duotone" alt="Two hands meeting on bare skin in black and flesh pink" tone="flesh" class="photo--hero" eager />
   </div>
 
   <!-- 2 · The idea -->
   <section class="on-paper section--quiet" aria-labelledby="idea-title">
-    <div class="container split">
-      <h2 id="idea-title" class="display-m" data-split>Mind-blowing sex <em>can be learned.</em></h2>
-      <div class="split__text" data-stagger>
-        <p>You want passionate, mind-blowing, leaves-you-a-little-altered sex. Who doesn't?</p>
-        <p>That kind of sex rarely just happens. It takes a little know-how. Knowledge and skill, basically, and both can be learned.</p>
-        <p>Connecting Heart and Sex is one way there. It's the one I teach.</p>
+    <div class="container split split--sticky">
+      <h2 id="idea-title" class="display-m" data-split>You want passionate, mind-blowing, leaves-you-a-little-altered intimate life and sex. <em>Who doesn't?</em></h2>
+      <div class="prose" data-stagger>
+        <p>Here's what usually happens instead.</p>
+        <p>In the beginning, it's easy. The butterfly phase carries you. You can't keep your hands off each other and everything feels new, because it is. It might not even feel like your absolute fuckyes but you’re willing to look past that because… well, the butterflies.</p>
+        <p>Then life settles. And somewhere along the way, your sex life settles too. Same order, same moves, same outcome. It's a little bit beige and you don’t quite know what to do about it.</p>
+        <p>(Single? You know this one from the inside. In your head, a little bit performing, low on your sex appeal confidence, low on ideas. Where's your body in all this? Where's the juice?)</p>
+        <p>You're stuck in a pattern that no longer turns you on. I call it the flatness and it's what I see most, by far.</p>
+        <p>So people reach for more. More intensity. Opening relationships. The next kink party. Fun, sometimes. And then the flatness comes back, because it was never about needing more.</p>
+        <p>What changes it is depth and imagination. Discovering that the small world you already have can hold a whole universe of eroticism. Same bed, same body, maybe even the same person you’re with and suddenly there's a door at the back you've never opened. The tiny world of your sheets, turned into the Narnia of delights.</p>
+        <p>And it doesn't stay in the bedroom. It becomes a current that's alive in how you move, eat, flirt, look at people and live out your purpose.</p>
+        <p>That kind of sex rarely just happens. It takes a little know-how. Knowledge and skill, basically. Both can be learned.</p>
+        <p>Connecting Heart and Sex is one way there. It's the one I've proven to work with 2,000 people who have been in my spaces. And it's how I live my own best sex life. That's why I teach it.</p>
       </div>
     </div>
   </section>
 
+  <!-- Image band -->
+  <div class="band">
+    <PhotoSlot caption="photo: details · oil on skin, fabric, a room in daylight" alt="Close detail of oil on skin and soft fabric in daylight" tone="flesh" class="photo--band" />
+  </div>
+
   <!-- 3 · The method -->
-  <section class="on-ink section" aria-labelledby="method-title">
+  <section class="on-ink section--quiet" aria-labelledby="method-title">
     <div class="container">
       <div class="method-head">
         <div class="stack">
@@ -55,13 +67,13 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
           <h2 id="method-title" class="display-m" data-split>Connecting heart <em>and sex.</em></h2>
         </div>
         <div class="method-intro" data-stagger>
-          <p>Here's what I've seen over and over: when people go through the heart first, the sex gets hotter. (Yes, really.)</p>
-          <p>Six steps, through the heart, into the sex, and into your life.</p>
+          <p>Here's what I've seen over and over: when people go through the heart first, the sex gets hotter. It’s like the secret sauce.</p>
+          <p>Six steps, through the heart, into the sex and into your life.</p>
         </div>
       </div>
       <MethodSteps />
       <div class="method-foot">
-        <a class="link-arrow" href={url('method')} data-reveal>How the method works</a>
+        <a class="link-arrow" href={url('whats-possible-here')} data-reveal>See what's possible here</a>
       </div>
     </div>
   </section>
@@ -77,7 +89,8 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
         <OfferCard
           href="1-1"
           tone="blood"
-          caption="one body, slow light"
+          caption="photo: one body in slow light, shoulder"
+          alt="One body in slow light seen from the shoulder"
           label={`1:1 · taster from ${tasterFrom(oneToOne)}`}
           title="1:1"
           line="Just you, your body and me as your guide. In my space in Lisbon, hands-on, at the pace your body can actually take."
@@ -86,20 +99,22 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
         <OfferCard
           href="couples"
           tone="flesh"
-          caption="two hands, close"
+          caption="photo: two hands meeting on skin"
+          alt="Two hands meeting on skin"
           label={`couples · taster from ${tasterFrom(couples)}`}
           title="Couples"
-          line="Four hours lay the groundwork; up to 16 walk the whole first journey. In Lisbon, or I come to you."
+          line="A little sniff in four hours, the whole first journey in ten. In Lisbon or I come to you."
           cta="Explore couples work"
         />
         <OfferCard
-          href="events/ritual-theatre"
+          href="events/erotic-ritual-art"
           tone="ink"
-          caption="performers in low light"
+          caption="photo: performers in low light, bodies in motion"
+          alt="Performers moving in low light"
           label="monthly · lisbon"
-          title="Ritual Theatre"
-          line="Erotic ritual art, without words. You write the prompts, we play them out. You just get to watch (and feel things)."
-          cta="About Ritual Theatre"
+          title="Erotic Ritual Art"
+          line="Performance art, without words. You play the director, we play it out. You just get to watch (and feel things)."
+          cta="About Erotic Ritual Art"
         />
       </div>
       <p class="offers__more" data-reveal>Rather start at home? <a class="link-arrow" href={url('library')}>The Library</a></p>
@@ -110,20 +125,21 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
   <Proof />
 
   <!-- 6 · Upcoming. Becomes the date list once dates are added in src/data/events.ts. -->
-  <section class="on-ink section" aria-label="Upcoming">
-    <div class="container">
+  <section class="on-ink section--quiet" aria-label="Upcoming">
+    <div class="container upcoming">
+      <PhotoSlot caption="photo: performers in low light, bodies in motion" alt="Performers moving in low light" tone="ink" class="photo--wide" />
       <EventList />
     </div>
   </section>
 
   <!-- 7 · The letter -->
-  <section class="on-blood section" aria-labelledby="letter-title">
+  <section class="on-blood section--quiet" aria-labelledby="letter-title">
     <div class="container split split--even">
       <div class="stack">
         <span class="label" data-type>the letter</span>
         <h2 id="letter-title" class="display-m" data-split>The stuff I <em>don't post.</em></h2>
         <p class="body-l" data-reveal>
-          Letters from my own sex life and practice. The experiments, the awkward bits, what I'm learning right now, and Ritual Theatre dates before anyone else. They're long (I don't really do short), and they come whenever there's something worth telling you.
+          Letters from my own sex life and practice. The experiments, the awkward bits, what I'm learning right now and Erotic Ritual Art dates before anyone else. They're long (I don't really do short) and they come whenever there's something worth telling you.
         </p>
       </div>
       <div data-reveal>
@@ -138,7 +154,7 @@ import { couples, oneToOne, tasterFrom } from '../data/packages';
       <span class="label" data-type>speaking and teaching</span>
       <h2 id="speaking-title" class="display-l speaking__title" data-split>Invite me to <em>your stage.</em></h2>
       <div class="speaking__row">
-        <p class="body-l" data-reveal>Festivals, conferences, workshops, podcasts. I bring slowness, honest talk about sex, and a room that feels a lot more alive by the end.</p>
+        <p class="body-l" data-reveal>Festivals, conferences, workshops, podcasts. I bring slowness, honest talk about sex and a room that feels a lot more alive by the end.</p>
         <a class="link-arrow" href={url('speaking')} data-reveal>Speaking</a>
       </div>
     </div>

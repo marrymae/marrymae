@@ -1,4 +1,5 @@
 ---
+import PhotoSlot from './PhotoSlot.astro';
 import { url } from '../lib/url';
 
 interface Props {
@@ -7,15 +8,18 @@ interface Props {
   title: string;
   line: string;
   cta: string;
+  /** Shot from the shoot list, shown until the photo exists. */
   caption: string;
+  alt: string;
   tone: 'blood' | 'flesh' | 'ink';
+  src?: string;
 }
-const { href, label, title, line, cta, caption, tone } = Astro.props;
+const { href, label, title, line, cta, caption, alt, tone, src } = Astro.props;
 ---
 
 <a class="card offer" href={url(href)}>
-  <div class={`card__media offer__media photo--${tone}`}>
-    <span aria-hidden="true">photo: {caption}</span>
+  <div class="offer__media">
+    <PhotoSlot caption={caption} alt={alt} tone={tone} src={src} class="photo--card" />
   </div>
   <div class="card__body">
     <span class="label">{label}</span>
