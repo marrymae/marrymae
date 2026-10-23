@@ -4,6 +4,7 @@
 //   tone="blood" → duotone, black on blood red
 //   tone="flesh" → duotone, black on flesh pink
 //   tone="ink"   → black and white
+//   tone="original" → the photo's own colours, no filter (only where Marry asks for it)
 // Until a photo exists, the slot shows a solid block in that tone with a short mono caption describing the shot.
 // Shoot list and style: brand/BRAND.md, "Images".
 import { url } from '../lib/url';
@@ -13,7 +14,7 @@ interface Props {
   alt: string;
   /** Short mono caption shown until the photo exists, e.g. "photo: two hands meeting on skin". */
   caption: string;
-  tone?: 'flesh' | 'blood' | 'ink';
+  tone?: 'flesh' | 'blood' | 'ink' | 'original';
   /** Path inside public/, e.g. "photos/hero.jpg". */
   src?: string;
   /** Above the fold: load straight away. Everything else lazy-loads. */
