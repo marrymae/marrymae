@@ -2,6 +2,11 @@
 import { url } from '../lib/url';
 import { upcoming, formatDate } from '../data/events';
 
+interface Props {
+  /** The homepage has its own label and headline above the list. */
+  showLabel?: boolean;
+}
+const { showLabel = true } = Astro.props;
 const list = upcoming();
 ---
 
@@ -20,7 +25,7 @@ const list = upcoming();
   </ul>
 ) : (
   <div class="events events--soon" data-stagger>
-    <span class="label">upcoming</span>
+    {showLabel && <span class="label">upcoming</span>}
     <p class="body-l">Erotic Ritual Art, performance art without words, opens in Lisbon soon. Dates and tickets land here first.</p>
     <a class="link-arrow" href={url('events/erotic-ritual-art')}>About Erotic Ritual Art</a>
   </div>

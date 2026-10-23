@@ -433,6 +433,46 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
 .on-ink .acc__a p { color: var(--paper-soft); }
 .on-ink .acc__q:focus-visible { outline-color: var(--paper); }
 
+/* ---------- Polaroid: a flesh-pink frame around a photo slot ---------- */
+.polaroid {
+  background: var(--flesh); padding: var(--space-4) var(--space-4) var(--space-8);
+  rotate: 2deg; align-self: center; width: 100%;
+}
+.polaroid--left { rotate: -2deg; }
+.polaroid .photo--polaroid { min-height: 0; aspect-ratio: 4 / 5; }
+.polaroid--hero { max-width: 480px; justify-self: end; }
+
+/* ---------- Homepage: the journeys (black) ---------- */
+.journeys .timeline { margin-top: var(--space-7); }
+.on-ink .timeline__line { background: var(--paper); }
+.on-ink .timeline__node { border-color: var(--paper); }
+.on-ink .timeline__stop--paper .timeline__node { background: var(--paper); }
+.on-ink .timeline__stop--flesh .timeline__node { background: var(--flesh); }
+.on-ink .timeline__stop--ink .timeline__node { background: var(--ink); }
+.on-ink .timeline__stop--blood .timeline__node { background: var(--blood); }
+.on-ink .timeline__link { border-color: var(--paper); }
+.on-ink .timeline__bracket { border-color: var(--paper); }
+.on-ink .timeline__note { color: var(--paper-soft); }
+.journey-blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-7); margin-top: var(--space-6); }
+.journey-block { border-top: var(--border-hairline) solid var(--ink-soft); padding-top: var(--space-4); max-width: var(--text-width); }
+.journey-block p { margin: 0; font-size: 1.125rem; font-weight: 500; }
+.journey-block__name { font-family: var(--font-display); font-size: var(--size-display-s); line-height: 1.1; font-weight: 400; display: block; margin-bottom: var(--space-3); }
+.journeys__line { margin: var(--space-8) 0 var(--space-5); max-width: none; }
+.journeys__more { margin: var(--space-6) 0 0; font-size: 1.125rem; font-weight: 500; }
+
+/* ---------- Homepage: proof (white) ---------- */
+.proof { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-8); align-items: start; }
+.proof .polaroid { position: sticky; top: var(--space-7); }
+.proof__text { display: flex; flex-direction: column; gap: var(--space-5); align-items: flex-start; }
+.proof__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
+.upcoming__head { margin-bottom: var(--space-7); }
+
+/* ---------- Justified body text (homepage, desktop) ---------- */
+.justify-text main p { hyphens: auto; -webkit-hyphens: auto; }
+@media (min-width: 701px) {
+  .justify-text main p:not(.label) { text-align: justify; }
+}
+
 /* ---------- Placeholder copy ---------- */
 .copy-to-come { margin: 0 0 var(--space-5); }
 
@@ -469,6 +509,11 @@ a.link-arrow:hover::after, .card:hover .link-arrow::after { transform: translate
   .split--even { grid-template-columns: 1fr; }
   .columns { grid-template-columns: 1fr; gap: var(--space-6); }
   .hero--home .photo--hero { order: -1; }
+  .hero--home .polaroid--hero { order: -1; justify-self: center; max-width: 340px; }
+  .polaroid { padding: var(--space-3) var(--space-3) var(--space-7); }
+  .proof { grid-template-columns: 1fr; gap: var(--space-7); }
+  .proof .polaroid { position: static; max-width: 340px; justify-self: center; }
+  .journey-blocks { grid-template-columns: 1fr; }
   .split--sticky > :first-child { position: static; }
   .quote--flip, .upcoming, .doors { grid-template-columns: 1fr; }
   .photo--page { min-height: 300px; }

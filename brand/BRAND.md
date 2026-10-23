@@ -40,8 +40,9 @@ Bold blood red, black, white and flesh pink as full-width blocks with square cor
 
 ## Components
 
-- **Menu:** wordmark left; links What's possible here · 1:1 · Couples · Events · Library (Erotic Ritual Art lives under Events); a solid "Start here" button. 2px line under the menu. Below 1080px wide: a square black menu button (44px) opening a full-screen black menu.
+- **Menu:** wordmark left; links What's possible here · 1:1 · Couples · Events · Library (Erotic Ritual Art lives under Events); a solid "Book a call" button (to /start: the intake form and the €50 discovery call). 2px line under the menu. Below 1080px wide: a square black menu button (44px) opening a full-screen black menu.
 - **Buttons:** `.btn.btn--solid` + `.btn.btn--outline` side by side with no gap (`.btn-pair`); the homepage hero has three (solid, outline, outline). Quiet links: `.link-arrow`.
+- **Polaroid** (`src/components/Polaroid.astro`): a photo slot inside a flesh-pink frame, square corners, an even border on three sides and a thicker bottom border, with a static tilt of about 2 degrees. Used for the homepage hero photo (duotone, black on blood red) and Marry's portrait in Proof (black and white).
 - **Photo slot** (`src/components/PhotoSlot.astro`): one slot for every image. Put the photo in `public/photos/` and pass `src`; CSS turns it into the brand look: `tone="blood"` duotone black on blood red, `tone="flesh"` duotone black on flesh pink, `tone="ink"` black and white. Until a photo exists the slot shows a solid block in its tone with a short mono caption describing the shot (from the shoot list below). Every slot has alt text. Above-the-fold slots load straight away; everything else lazy-loads.
 - **Timeline** (What's possible here, under the hero): the journey as four stops — a little sniff (4h) → Connecting heart and sex (10h) → Erotic craft (20h) → The deep end (10 or 20h). A 2px line with square nodes (never circles); each stop shows its name in DM Serif Display and its hours as a mono label; the tiles deepen paper → flesh → ink → blood. "credited if you continue" sits between the first two stops; a bracket under the middle two reads "The whole way · 30h". Each stop links to its section. Horizontal on desktop, vertical on phones. Draws in on scroll; still for reduced motion.
 - **Method steps** (homepage): black band, six steps numbered 01–06 in mono (Slow · Feel · Speak · Meet · Flow · Tend), each with its own 2px bright red line above it, step names in the display font and a short paragraph each. Two rows of three on desktop; stacked on phones.
@@ -63,19 +64,22 @@ All current copy lives in `content/website-copy.md`. Use it word for word.
 
 ### Homepage
 
+Copy: `content/homepage-copy.md`, word for word. (The homepage section in `content/website-copy.md` is older; `homepage-copy.md` wins.)
+
 Hero line: **"Eroticism that lasts, because it's real."** (italic: because it's real.) The footer line stays the same.
 
 Top to bottom, then the footer:
 
-1. **Hero:** blood. Text left, large photo right on desktop (photo first on phones). Three buttons: Come alone (solid) · Come together (outline) · Come watch (outline).
+1. **Hero:** blood. Label "lisbon · erotic education · 1:1 · couples". Text left, the photo in a pink Polaroid right on desktop (Polaroid first on phones). Three buttons: Come alone (solid) · Come together (outline) · Come watch (outline).
 2. **The idea:** white. The flatness, then what's possible. The headline stays put while the story scrolls on desktop.
-3. **Image band:** full width, between The idea and The method.
-4. **The method:** black, the six steps in two rows of three.
-5. **Ways in:** white offer cards with tall photos (1:1 · Couples · Erotic Ritual Art), with a line to the Library under them.
-6. **Proof:** flesh quote panel with a portrait of Marry ("the person in the room"). Room for a short list of trainings and two or three anonymous quotes.
-7. **Upcoming:** black, one atmospheric image for Erotic Ritual Art and a note until there are dates, then the date list.
-8. **The letter:** blood newsletter sign-up.
-9. **Speaking teaser:** white, linking to the Speaking page.
+3. **Image band:** full width (skin, hands, slow light).
+4. **The journeys:** black. The timeline (white line, borders and bracket on black; stops link to What's possible here), then the four journey blocks (name and hours in DM Serif Display, text in Hanken Grotesk), "Alone or with a partner, it's the same road.", three buttons and the Library line. The method lives inside this section.
+5. **Proof:** white. Label "your guide". Marry's portrait in a pink Polaroid left, text right (Polaroid first on phones), a "Book a call →" button and "Meet Marry →".
+6. **Upcoming events:** black. Label "events · lisbon", headline, one atmospheric image and the Erotic Ritual Art note until there are dates, then the date list.
+7. **The bedside letter:** blood newsletter sign-up ("Send me the bedside letter").
+8. **Speaking teaser:** white, linking to the Speaking page.
+
+**Text layout (homepage):** body text is justified on desktop with `hyphens: auto` (the page is `lang="en"`); under 700px it is left-aligned. Headlines, labels and buttons are always left-aligned. Text columns stay at the brand text width (560px, about 65 characters) so justified lines don't open gaps.
 
 Sections have generous space between them (96px, and 96 + 72px for storytelling sections) so the stories have room to breathe.
 

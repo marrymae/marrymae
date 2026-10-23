@@ -19,7 +19,7 @@ const { current } = Astro.props;
       </li>
     ))}
     <li>
-      <a class="btn btn--solid" href={url('start')} aria-current={current === 'start' ? 'page' : undefined}>Start here</a>
+      <a class="btn btn--solid" href={url('start')} aria-current={current === 'start' ? 'page' : undefined}>Book a call</a>
     </li>
   </ul>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu</button>
@@ -42,7 +42,7 @@ const { current } = Astro.props;
       ))}
     </ul>
     <div class="menu__bottom">
-      <a class="btn btn--solid" href={url('start')}>Start here</a>
+      <a class="btn btn--solid" href={url('start')}>Book a call</a>
       <span class="label">hi@marrymae.com · @marrymae · lisbon</span>
     </div>
   </div>

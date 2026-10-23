@@ -104,7 +104,7 @@ function photos() {
   });
 
   // The hero photo block leans a little toward the pointer.
-  const heroPhoto = document.querySelector<HTMLElement>('.photo--hero');
+  const heroPhoto = document.querySelector<HTMLElement>('.polaroid--hero, .photo--hero');
   if (heroPhoto && header && finePointer) {
     gsap.set(heroPhoto, { transformPerspective: 900 });
     const rx = gsap.quickTo(heroPhoto, 'rotationX', { duration: 0.8, ease: 'power3.out' });

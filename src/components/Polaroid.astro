@@ -1,0 +1,21 @@
+---
+// A photo slot inside a flesh-pink Polaroid frame: square corners, an even border on three sides,
+// a thicker bottom border and a static tilt of about 2 degrees.
+import PhotoSlot from './PhotoSlot.astro';
+
+interface Props {
+  alt: string;
+  caption: string;
+  tone?: 'flesh' | 'blood' | 'ink';
+  src?: string;
+  eager?: boolean;
+  /** Tilt direction. */
+  tilt?: 'left' | 'right';
+  class?: string;
+}
+const { tilt = 'right', class: className = '', ...photo } = Astro.props;
+---
+
+<div class={`polaroid polaroid--${tilt} ${className}`}>
+  <PhotoSlot {...photo} class="photo--polaroid" />
+</div>

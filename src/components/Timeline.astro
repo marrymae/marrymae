@@ -2,6 +2,14 @@
 // The journey as a timeline: four stops on a 2px line with square nodes.
 // Horizontal on desktop, vertical on phones. The colour deepens along the way: paper → flesh → ink → blood.
 import { names, couples } from '../data/packages';
+import { url } from '../lib/url';
+
+interface Props {
+  /** Page the stops jump to; empty means sections on the current page. */
+  page?: string;
+}
+const { page } = Astro.props;
+const link = (hash: string) => (page ? `${url(page)}${hash}` : hash);
 
 const c = couples;
 const stops = [
@@ -16,7 +24,7 @@ const stops = [
   <span class="timeline__line" aria-hidden="true" data-timeline-line></span>
   {stops.map((stop, i) => (
     <div class={`timeline__stop timeline__stop--${stop.tone}`} style={`--i: ${i + 1}`} role="listitem">
-      <a href={stop.href} class="timeline__link">
+      <a href={link(stop.href)} class="timeline__link">
         <span class="timeline__node" aria-hidden="true" data-timeline-node></span>
         <span class="label timeline__hours">{stop.hours}</span>
         <span class="timeline__name">{stop.name}</span>

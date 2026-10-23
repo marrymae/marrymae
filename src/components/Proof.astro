@@ -1,30 +1,37 @@
 ---
-import PhotoSlot from './PhotoSlot.astro';
+// Homepage proof. Copy: content/homepage-copy.md, "4. Proof", word for word.
+import Polaroid from './Polaroid.astro';
 import { url } from '../lib/url';
 import { trainings, quotes } from '../data/proof';
 ---
 
-<section class="on-flesh section--quiet" aria-labelledby="proof-title">
+<section class="on-paper section--quiet" aria-labelledby="proof-title">
   <div class="container">
-    <div class="quote">
-      <PhotoSlot caption="photo: Marry, laughing, unposed" alt="Marry laughing mid-sentence in black and white" tone="ink" class="photo--quote" />
-      <div class="quote__text">
-        <span class="label" data-type>the person in the room</span>
-        <h2 id="proof-title" class="display-l" data-scrub-words>About 2,000 people. <em>Vulnerability is a turn on.</em></h2>
+    <div class="proof">
+      <Polaroid caption="photo: Marry, laughing, unposed" alt="Marry laughing mid-sentence in black and white" tone="ink" tilt="left" />
+      <div class="proof__text">
+        <span class="label" data-type>your guide</span>
+        <h2 id="proof-title" class="display-m" data-split>2,000 people taught me this: <em>vulnerability is a turn on.</em></h2>
         <div class="prose" data-stagger>
-          <p>I've been in a lot of rooms.</p>
+          <p>I've been in a lot of rooms. From Tao tantric trainings in Asian jungles, where a well-known master told me to breathe into my anus day in and day out (yes, really), to the underworld of kink and fast sex that is Berlin.</p>
+          <p>I trained as a sex therapist and a relationship therapist. I trained in tantra and I trained in kink. I work as a sex educator and I'm an erotic ritualist at heart and in my soul. My toolbox is big and so is my lens: I look at your unique imprint first and choose from the toolbox from there.</p>
+          <p>A few of the rooms that shaped my work today:</p>
           <p>In the therapy room, I saw how many sex lives go quiet and why. Resentment, fear, the things that never got said.</p>
-          <p>In the sex-positive scene, I saw people go fast, perform and go home with a quick fix but emptier than they arrived.</p>
-          <p>And in my own temple spaces I saw it again and again and again: when people go through the heart first, something real unleashes. An erotic current, alive and authentic, that nobody has to force.</p>
-          <p>Over the years, that became what I'm known for. (And my work appreciated for.)</p>
-          <p>I'm a trained sex therapist and relationship therapist. As a sex educator and erotic ritualist I've worked with about 2,000 people. I bring a therapist's skill into the room but I teach you through the body and the beyond.</p>
+          <p>At sex parties, I saw people go fast, perform and go home with a quick fix but emptier than they arrived.</p>
+          <p>In my own temple spaces I saw it again and again and again: when people go through the heart first, something real unleashes. An erotic current, alive and authentic, that nobody has to force. And still, it doesn't always stick.</p>
+          <p>And in the spiritual bubbles I saw how often our humanity gets skipped. The messy, tender, very human parts, bypassed on the way to something higher.</p>
+          <p>Here's what all of it taught me. Your eroticism can only reach as far as you let yourself be human. So lasting eroticism makes room for all of you: the old hurts, the shame, the parts you've kept hidden, the parts you long for and everything else you are. We meet it all and work towards making peace with it. That's how a lot more of you becomes available for pleasure.</p>
+          <p>I bring a therapist's skill into the room but I teach you through the body, the heart and the beyond.</p>
         </div>
         {trainings.length > 0 && (
           <ul class="label proof__trainings" data-reveal>
             {trainings.map((t) => <li>{t}</li>)}
           </ul>
         )}
-        <a class="link-arrow" href={url('about')} data-reveal>Meet Marry</a>
+        <div class="proof__actions" data-reveal>
+          <a class="btn btn--solid" href={url('start')} data-magnetic>Book a call →</a>
+          <a class="link-arrow" href={url('about')}>Meet Marry</a>
+        </div>
       </div>
     </div>
     {quotes.length > 0 && (
